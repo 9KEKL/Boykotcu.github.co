@@ -315,10 +315,10 @@
     const currentDate = new Date().toLocaleDateString('tr-TR'); // Kayıt tarihini alıyoruz
 
     // LocalStorage'a bilgileri kaydet
-    localStorage.setItem("username", name);        // Kullanıcı adı
-    localStorage.setItem("email", email);          // E-posta
-    localStorage.setItem("registerDate", currentDate); // Kayıt tarihi
-
+localStorage.setItem("username", name);        // Kullanıcı adı
+localStorage.setItem("email", email);          // E-posta
+localStorage.setItem("registerDate", currentDate); // Kayıt tarihi
+localStorage.setItem("registerPassword", password); // Şifre
     alert("Kayıt başarılı! Giriş yapabilirsiniz.");
 
     // Formu giriş moduna geçir
@@ -356,20 +356,30 @@
     
   </script>
 <script>
-  document.getElementById("login-form").addEventListener("submit", function (e) {
+document.getElementById("login-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const username = document.getElementById("login-username").value;
-  const email = document.getElementById("login-email").value;
-  const password = document.getElementById("login-password").value;
+  const usernameInput = document.getElementById("login-username").value;
+  const emailInput = document.getElementById("login-email").value;
+  const passwordInput = document.getElementById("login-password").value;
 
-  if (email === "admin@boykot.com" && password === "1234") {
-  localStorage.setItem("username", username);
-  localStorage.setItem("email", email);
-  localStorage.setItem("email", email);
+  // localStorage'tan kayıtlı verileri al
+  const savedUsername = localStorage.getItem("username");
+  const savedEmail = localStorage.getItem("email");
+  const savedPassword = localStorage.getItem("registerPassword");
+
+  // Eğer kayıtlı kullanıcı yoksa ya da bilgiler uyuşmazsa
+  if (!savedEmail || !savedPassword || emailInput !== savedEmail || passwordInput !== savedPassword) {
+    alert("Giriş bilgilerinizi kontrol edin veya kayıt olun.");
+    return;
+  }
+
+  // Giriş başarılıysa
+  localStorage.setItem("username", usernameInput); // adı tekrar güncelle
+  localStorage.setItem("lastLoginDate", new Date().toLocaleDateString('tr-TR'));
+
   alert("Giriş başarılı! Profil sayfasına yönlendiriliyorsunuz.");
   window.location.href = "profile.html";
-}
 });
 </script>
 <form onsubmit="handleLogin(event)">
