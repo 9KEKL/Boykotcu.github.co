@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ayarlar</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      padding: 40px 20px;
+      min-height: 100vh;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .settings-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .setting-item label {
+      font-size: 18px;
+    }
+
+    /* Toggle Switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #4CAF50;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background-color: #121212;
+      color: #eeeeee;
+    }
+
+    body.dark-mode .settings-container {
+      background-color: #1f1f1f;
+      color: #eeeeee;
+    }
+
+    body.dark-mode .slider {
+      background-color: #555;
+    }
+
+    input:checked + .slider {
+      background-color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Ayarlar</h1>
+
+  <div class="settings-container">
+    <div class="setting-item">
+      <label for="darkModeToggle">Karanlık Mod</label>
+      <label class="switch">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <!-- Diğer ayarlar buraya eklenebilir -->
+  </div>
+
+  <script>
+    // Sayfa yüklendiğinde dark mode ayarını uygula
+    document.addEventListener('DOMContentLoaded', function () {
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+      // Dark mode ayarını uygula
+      if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.checked = true;
+      }
+
+      // Toggle değiştiğinde ayarı kaydet
+      darkModeToggle.addEventListener('change', function () {
+        if (this.checked) {
+          document.body.classList.add('dark-mode');
+          localStorage.setItem('darkMode', 'true');
+        } else {
+          document.body.classList.remove('dark-mode');
+          localStorage.setItem('darkMode', 'false');
+        }
+      });
+    });
+
+    // Sayfadan çıkarken değişikliklerin kaydedilip kaydedilmediğini sor
+    let isFormDirty = false;
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('change', function () {
+      isFormDirty = true;
+    });
+
+    window.addEventListener('beforeunload', function (e) {
+      if (isFormDirty) {
+        const confirmationMessage = 'Değişiklikleri kaydetmek istiyor musunuz?';
+        (e || window.event).returnValue = confirmationMessage;
+        return confirmationMessage;
+      }
+    });
+  </script>
+
+</body>
+</html>

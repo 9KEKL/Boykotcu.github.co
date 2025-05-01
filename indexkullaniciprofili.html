@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profilim</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .profile-header img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid orange;
+      margin-bottom: 10px;
+    }
+
+    .username {
+      font-size: 24px;
+      font-weight: bold;
+      color: orange;
+    }
+
+    .info-section {
+      width: 100%;
+      max-width: 400px;
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+      margin-bottom: 20px;
+    }
+
+    .info-row {
+      margin-bottom: 15px;
+    }
+
+    .info-label {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .info-value {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .action-button {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .edit {
+      background-color: #ffa500;
+      color: black;
+    }
+
+    .edit:hover {
+      background-color: #e69500;
+    }
+
+    .change-pass {
+      background-color: #444;
+      color: white;
+    }
+
+    .change-pass:hover {
+      background-color: #666;
+    }
+
+    .logout {
+      background-color: darkred;
+      color: white;
+    }
+
+    .logout:hover {
+      background-color: #a30000;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="profile-header">
+    <img id="profileImage" src="" alt="Profil Resmi">
+    <div class="username" id="usernameDisplay">Kullanıcı Adı</div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-row">
+      <div class="info-label">İsim</div>
+      <div class="info-value" id="userName">-</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">E-posta</div>
+      <div class="info-value" id="userEmail">-</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">Telefon</div>
+      <div class="info-value" id="userPhone">-</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">Kayıt Tarihi</div>
+      <div class="info-value" id="userJoined">-</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">Hesap Türü</div>
+      <div class="info-value" id="userRole">Standart</div>
+    </div>
+  </div>
+
+  <div class="button-group">
+    <button class="action-button edit" onclick="alert('Profili düzenle gelecekteki sürümde eklenecek.')">Profili Düzenle</button>
+    <button class="action-button change-pass" onclick="alert('Şifre değiştirme gelecekteki sürümde eklenecek.')">Şifre Değiştir</button>
+    <button class="action-button logout" onclick="logout()">Çıkış Yap</button>
+  </div>
+
+  <script>
+    const username = localStorage.getItem('username');
+    const profilePic = localStorage.getItem('profilePic');
+    const email = localStorage.getItem('email');
+    const name = localStorage.getItem('name');
+    const phone = localStorage.getItem('phone') || 'Belirtilmemiş';
+    const joined = localStorage.getItem('registerDate') || '01.01.2024';
+    const role = localStorage.getItem('role') || 'Standart';
+
+    if (username) document.getElementById('usernameDisplay').textContent = username;
+    if (profilePic) document.getElementById('profileImage').src = profilePic;
+    if (email) document.getElementById('userEmail').textContent = email;
+    if (name) document.getElementById('userName').textContent = name;
+    if (phone) document.getElementById('userPhone').textContent = phone;
+    if (joined) document.getElementById('userJoined').textContent = joined;
+    if (role) document.getElementById('userRole').textContent = role;
+
+    function logout() {
+      localStorage.clear();
+      window.location.href = 'indexgiris.html';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+#searchInput {
+  padding: 10px;
+  width: 60%;
+  max-width: 400px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+#menuIcon {
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+#sideMenu {
+  position: fixed;
+  top: 0;
+  right: -270px;
+  width: 270px;
+  height: 100%;
+  background-color: #14213d;
+  color: white;
+  z-index: 999;
+  transition: right 0.3s ease;
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#sideMenu.open {
+  right: 0;
+}
+
+#menuContent {
+  padding-top: 50px;
+  position: relative;
+}
+
+#closeMenu {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+}
+
+#menuContent button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background-color: #fca311;
+  color: #14213d;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#menuContent button:hover {
+  background-color: #ffba08;
+}
+
+#authSection,
+#userSection {
+  margin-top: 40px;
+  margin-bottom: 15px;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+#userSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+main {
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.6);
+  min-height: calc(100vh - 140px);
+}
+
+#brand-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+#brand-list h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#brand-list .brand {
+  background-color: rgba(255, 255, 255, 0.1);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#brand-list .brand:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+#brand-list .brand::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  border-radius: 12px;
+}
+
+#brand-list .brand h3,
+#brand-list .brand p {
+  position: relative;
+  z-index: 1;
+}
+
+#suggest-form {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 30px;
+}
+
+#suggest-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input, textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+}
+
+input[type="file"] {
+  background-color: #fff;
+  color: #000;
+}
+
+button[type="submit"] {
+  background-color: #fca311;
+  color: #14213d;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #ffba08;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+#detailOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#detailCard {
+  background: #ffffff;
+  color: #000;
+  max-width: 800px;
+  width: 90%;
+  display: flex;
+  gap: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+}
+
+#detailCard img {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+#detailCard .content {
+  flex: 1;
+}
+
+#closeDetail {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+}

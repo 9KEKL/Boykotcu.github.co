@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+<!-- EmailJS Script -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("6ZMgSA2l6mUmDN219"); // Buraya EmailJS kullanıcı ID’ni yaz
+  })();
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Boykot Bilgi Platformu | Giriş & Kayıt</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+
+    /* HEADER (GİRİŞ & KAYIT KISMI) */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 30px;
+    }
+
+    .auth-container {
+      background: #ffffff;
+      color: #000;
+      width: 400px;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .form-wrapper {
+      width: 200%;
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+
+    .form-container {
+      width: 50%;
+      padding: 0 20px;
+    }
+
+    .form {
+      transition: transform 0.5s ease;
+    }
+
+    .form input {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .form button {
+      width: 100%;
+      padding: 12px;
+      background: #2c5364;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .form button:hover {
+      background: #1a2a33;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .toggle a {
+      color: #2c5364;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .signup-mode .form-wrapper {
+      transform: translateX(-50%);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2c5364;
+    }
+
+    /* ALT KISIM (BİLGİLENDİRME) */
+    .info-section {
+      background: url('https://images.unsplash.com/photo-1519999482648-25049ddd37b1?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      padding: 100px 30px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .info-content {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 15px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .info-content h2, .info-content h3 {
+      margin-bottom: 20px;
+      color: #ffdd57;
+    }
+
+    .info-content ul {
+      text-align: left;
+      list-style: square inside;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #111;
+      color: #bbb;
+    }
+
+    @media (max-width: 600px) {
+      .auth-container {
+        width: 90%;
+        padding: 30px 20px;
+      }
+
+      .info-content {
+        padding: 30px 20px;
+      }
+    }
+.contact-section {
+  background: #1c1c1c;
+  color: #fff;
+  padding: 80px 30px;
+  text-align: center;
+}
+
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-container input,
+.contact-container textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.contact-container button {
+  padding: 12px 20px;
+  border: none;
+  background-color: #ffdd57;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-container button:hover {
+  background-color: #e6c645;
+}
+
+#form-status {
+  margin-top: 15px;
+  font-size: 15px;
+}
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.scroll-indicator span {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-left: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  transform: rotate(-45deg);
+  animation: bounce 2s infinite;
+  opacity: 0.8;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) rotate(-45deg);
+  }
+  40% {
+    transform: translateY(10px) rotate(-45deg);
+  }
+  60% {
+    transform: translateY(5px) rotate(-45deg);
+  }
+}
+
+  </style>
+</head>
+<body>
+<!-- GİRİŞ / KAYIT BÖLÜMÜ -->
+
+<section class="header">
+  <div class="scroll-indicator">
+    <span></span>
+  </div>
+
+  <div class="auth-container" id="auth-container">
+    <div class="form-wrapper" id="form-wrapper">
+
+      <!-- GİRİŞ FORMU -->
+      <div class="form-container">
+    <form class="form" id="login-form">
+  <h2>Giriş Yap</h2>
+<input type="text" id="login-username" placeholder="Adınız Soyadınız" required />
+<input type="email" id="login-email" placeholder="E-posta" required />
+<input type="password" id="login-password" placeholder="Şifre" required />
+  <button type="submit">Giriş Yap</button>
+  <div class="toggle">
+    Hesabın yok mu? <a href="javascript:void(0);" onclick="toggleMode()">Kayıt Ol</a>
+  </div>
+</form>
+      </div>
+
+      <!-- KAYIT FORMU -->
+      <div class="form-container">
+        <form class="form" id="signup-form">
+          <h2>Kayıt Ol</h2>
+          <input type="text" id="register-name" placeholder="Ad Soyad" required />
+          <input type="email" id="register-email" placeholder="E-posta" required />
+          <input type="password" id="register-password" placeholder="Şifre" required />
+          <button type="submit">Kayıt Ol</button>
+          <div class="toggle">
+            Zaten hesabın var mı? <a onclick="toggleMode()">Giriş Yap</a>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- BİLGİLENDİRME KISMI -->
+  <section class="info-section">
+    <div class="info-content">
+      <h2>Boykot Nedir?</h2>
+      <p>
+        Boykot, bireylerin veya grupların bir şirket, ürün ya da yapıya karşı bilinçli olarak tüketimden kaçınmasıdır.
+        Bu, toplumsal farkındalık oluşturmak ve adaletsiz sistemlere karşı ses çıkarmanın güçlü bir yoludur.
+      </p>
+
+      <h3>Neden Boykot?</h3>
+      <ul>
+        <li>Adaletsizliği görünür kılmak</li>
+        <li>Toplumsal dayanışma göstermek</li>
+        <li>Şirketlerin sorumluluk almasını sağlamak</li>
+      </ul>
+      <p>
+        Bu platform sayesinde güncel boykot kampanyalarına ulaşabilir, destek verebilir ve sesini duyurabilirsin.
+      </p>
+    </div>
+  </section>
+<section class="contact-section">
+  <div class="contact-container">
+    <h2>İletişime Geç</h2>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Adınız" required />
+      <input type="email" name="email" placeholder="E-posta" required />
+      <textarea name="message" placeholder="Mesajınız" rows="5" required></textarea>
+      <button type="submit">Gönder</button>
+    </form>
+    <p id="form-status"></p>
+  </div>
+</section>
+
+  <footer>
+    &copy; 2025 Boykot Platformu | Tüm Hakları Saklıdır
+  </footer>
+
+<script>
+  document.getElementById("signup-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("register-name").value;
+    const email = document.getElementById("register-email").value;
+    const password = document.getElementById("register-password").value;
+
+    const currentDate = new Date().toLocaleDateString('tr-TR'); // Kayıt tarihini alıyoruz
+
+    // LocalStorage'a bilgileri kaydet
+    localStorage.setItem("username", name);        // Kullanıcı adı
+    localStorage.setItem("email", email);          // E-posta
+    localStorage.setItem("registerDate", currentDate); // Kayıt tarihi
+
+    alert("Kayıt başarılı! Giriş yapabilirsiniz.");
+
+    // Formu giriş moduna geçir
+    document.getElementById("form-wrapper").style.transform = "translateX(0)";
+  });
+</script>
+
+<script>
+  const contactForm = document.getElementById("contact-form");
+  const formStatus = document.getElementById("form-status");
+
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_yusvmdy", "template_ens0g99", this)
+      .then(function () {
+        formStatus.textContent = "Mesajınız başarıyla gönderildi!";
+        contactForm.reset();
+      }, function (error) {
+        formStatus.textContent = "Bir hata oluştu. Lütfen tekrar deneyin.";
+        console.error(error);
+      });
+  });
+</script>
+
+  <script>
+    const container = document.getElementById("auth-container");
+
+    function toggleMode() {
+      container.classList.toggle("signup-mode");
+    }
+
+    
+
+    
+  </script>
+<script>
+  document.getElementById("login-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const username = document.getElementById("login-username").value;
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
+
+  if (email === "admin@boykot.com" && password === "1234") {
+  localStorage.setItem("username", username);
+  localStorage.setItem("email", email);
+  localStorage.setItem("email", email);
+  alert("Giriş başarılı! Profil sayfasına yönlendiriliyorsunuz.");
+  window.location.href = "profile.html";
+}
+});
+</script>
+<form onsubmit="handleLogin(event)">
+  <input type="text" id="username" placeholder="Kullanıcı adınızı girin" required />
+  <button type="submit">Devam Et</button>
+</form>
+
+<script>
+  function handleLogin(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    localStorage.setItem('username', username);
+    window.location.href = 'profile.html'; // Profil fotoğrafı seçme sayfasına yönlendirme
+  }
+</script>
+<script>
+  document.getElementById("login-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const username = document.getElementById("login-username").value;
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+
+    // Eğer giriş başarılıysa, bilgileri localStorage'a kaydet
+    if (email === "admin@boykot.com" && password === "1234") {
+      localStorage.setItem("username", username);          // Kullanıcı adı
+      localStorage.setItem("email", email);                // E-posta
+      localStorage.setItem("lastLoginDate", new Date().toLocaleDateString('tr-TR'));  // Giriş tarihi
+
+      alert("Giriş başarılı! Profil sayfasına yönlendiriliyorsunuz.");
+      window.location.href = "profile.html"; // Profil sayfasına yönlendir
+    } else {
+      alert("Giriş bilgilerinizi kontrol edin.");
+    }
+  });
+</script>
+</body>
+</html>

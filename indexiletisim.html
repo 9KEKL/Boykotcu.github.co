@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>İletişim Formu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("6ZMgSA2l6mUmDN219"); // EmailJS User ID
+    })();
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1f1c2c, #928DAB);
+      color: #fff;
+      min-height: 100vh;
+      padding: 30px 20px;
+    }
+
+    .back-button {
+      background-color: transparent;
+      color: #fca311;
+      border: 2px solid #fca311;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0 auto 30px;
+      display: block;
+      transition: all 0.3s ease;
+      width: 100%;
+      max-width: 500px;
+      height: 60px;
+    }
+
+    .back-button:hover {
+      background-color: #fca311;
+      color: #14213d;
+    }
+
+    .form-wrapper {
+      background-color: #ffffff10;
+      backdrop-filter: blur(15px);
+      border-radius: 15px;
+      padding: 40px;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: 600;
+      color: #ffdd57;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      background-color: #ffffff20;
+      color: #fff;
+    }
+
+    form input::placeholder,
+    form textarea::placeholder {
+      color: #ddd;
+    }
+
+    form button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      background-color: #ffdd57;
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    form button:hover {
+      background-color: #e6c645;
+    }
+
+    #form-status {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 14px;
+      color: #00ffae;
+    }
+
+    @media (max-width: 600px) {
+      .form-wrapper {
+        padding: 30px 20px;
+      }
+
+      .back-button {
+        font-size: 20px;
+        height: auto;
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Geri Dön Butonu -->
+  <button class="back-button" onclick="window.history.back()">← Önceki Sayfaya Geri Dön</button>
+
+  <div class="form-wrapper">
+    <h2>İletişime Geç</h2>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Adınız" required />
+      <input type="email" name="email" placeholder="E-posta adresiniz" required />
+      <textarea name="message" placeholder="Mesajınız" rows="5" required></textarea>
+      <button type="submit">Gönder</button>
+    </form>
+    <p id="form-status"></p>
+  </div>
+
+  <script>
+    const contactForm = document.getElementById("contact-form");
+    const formStatus = document.getElementById("form-status");
+
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs.sendForm("service_yusvmdy", "template_ens0g99", this)
+        .then(function () {
+          formStatus.textContent = "Mesajınız başarıyla gönderildi!";
+          contactForm.reset();
+        }, function (error) {
+          formStatus.textContent = "Bir hata oluştu. Lütfen tekrar deneyin.";
+          console.error("EmailJS Hatası:", error);
+        });
+    });
+  </script>
+
+</body>
+</html>

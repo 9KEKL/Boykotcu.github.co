@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Haberler</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background-size: cover;
+      padding: 40px 20px;
+      min-height: 100vh;
+      color: white;
+    }
+
+    .back-button {
+      background-color: transparent;
+      color: #fca311;
+      border: 2px solid #fca311;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0 auto 30px;
+      display: block;
+      transition: all 0.3s ease;
+      width: 98%;
+      max-width: 935px;
+      height: 80px;
+    }
+
+    .back-button:hover {
+      background-color: #fca311;
+      color: #14213d;
+	   
+    }
+
+    h1.title {
+      text-align: center;
+      font-size: 40px;
+      margin-bottom: 50px;
+      color: #ffffff;
+      background: linear-gradient(to right, #FF0000, #00A859);
+      padding: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      width: 75%;
+      max-width: 600px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .custom-image {
+      width: 100%;
+      height: 200px;
+      background: url('https://www.setav.org/assets/uploads/2024/05/thumbs_b_c_a66837d6a93504dd783ac3422f836ef0.jpg?3') no-repeat center center;
+      background-size: cover;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .title {
+      font-size: 20px;
+      color: #fca311;
+      margin-bottom: 10px;
+    }
+
+    .desc {
+      font-size: 15px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #666;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+    }
+
+    .icons span {
+      margin-right: 20px;
+      cursor: pointer;
+    }
+
+    .icons span:hover { color: #fca311; }
+
+    .like::before { content: "❤️ "; }
+    .comment::before { content: "💬 "; }
+    .views::before { content: "👁️ "; }
+
+    @media (max-width: 768px) {
+      .card { width: 100%; }
+      .back-button {
+        font-size: 24px;
+        height: auto;
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Geri Dön Butonu - En Üste -->
+  <button class="back-button" onclick="window.history.back()">← Önceki Sayfaya Geri Dön</button>
+
+  <h1 class="title">Son Haberler</h1>
+
+  <div class="news-list">
+    <!-- Haber Kartları -->
+    <div class="card">
+      <div class="custom-image"></div>
+      <div class="content">
+        <div class="title">Marka X, çevre krizine neden oluyor mu?</div>
+        <div class="desc">Son yayınlanan belgeler, Marka X'in üretim sürecinde çevreye ciddi zarar verdiğini öne sürüyor.</div>
+        <div class="info">
+          <div class="icons">
+            <span class="like">120</span>
+            <span class="comment">18</span>
+            <span class="views">1.542</span>
+          </div>
+          <div>Boykot Platformu</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="custom-image"></div>
+      <div class="content">
+        <div class="title">Ünlü marka işçilerine düşük maaş ödüyor</div>
+        <div class="desc">Raporlara göre ünlü tekstil markası, çalışanlarına asgari ücretin altında ödeme yapıyor.</div>
+        <div class="info">
+          <div class="icons">
+            <span class="like">89</span>
+            <span class="comment">7</span>
+            <span class="views">978</span>
+          </div>
+          <div>Boykot Platformu</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="custom-image"></div>
+      <div class="content">
+        <div class="title">Hayvanlar üzerinde test yapan şirket ifşa edildi</div>
+        <div class="desc">Sosyal medyada yayılan görüntülerde, bir kozmetik markasının hayvan deneyleri uyguladığı ortaya çıktı.</div>
+        <div class="info">
+          <div class="icons">
+            <span class="like">210</span>
+            <span class="comment">33</span>
+            <span class="views">2.645</span>
+          </div>
+          <div>Boykot Platformu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,4801 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Boykot Listesi</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      min-height: 100vh;
+    }
+
+    .back-button {
+      background-color: transparent;
+      color: #fca311;
+      border: 2px solid #fca311;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      display: block;
+      width: 98%;
+    }
+
+    .back-button:hover {
+      background-color: #fca311;
+      color: #14213d;
+    }
+
+    .search-box {
+      width: 95%;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 8px;
+      border: none;
+      font-size: 18px;
+      outline: none;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .card {
+      width: 95%;
+      max-width: 300px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 15px 0 10px;
+    }
+
+    .card h3.red {
+      color: #ff4c4c;
+    }
+
+    .card h3.green {
+      color: #4caf50;
+    }
+
+    .card p {
+      padding: 0 15px 20px;
+      color: #ffffffdd;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="window.history.back()" class="back-button">← Önceki Sayfaya Geri Dön</button>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Marka Ara..." onkeyup="filterCards()">
+  </div>
+
+  <div class="cards-container" id="cardContainer">
+    <!-- DORITOS -->
+    <a href="indexdoritos.html" class="card">
+      <img src="IMG_4315.JPG" alt="Doritos">
+      <h3 class="red">Doritos</h3>
+      <p>İsrail destekçisi politikalar sebebiyle boykot ediliyor.</p>
+    </a>
+
+    <!-- COCACOLA -->
+    <a href="indexcocacola.html" class="card">
+      <img src="IMG_4316.JPG" alt="Coca-Cola">
+      <h3 class="red">Coca-Cola</h3>
+      <p>İsrail ile olan ticari ilişkiler nedeniyle boykot edilmekte.</p>
+    </a>
+
+    <!-- PEPSI -->
+    <a href="indexpepsi.html" class="card">
+      <img src="IMG_4317.JPG" alt="Pepsi">
+      <h3 class="red">Pepsi</h3>
+      <p>Geçmişteki etik dışı uygulamalar ve iş birlikleri nedeniyle boykot listesinde.</p>
+    </a>
+
+    <!-- ALGIDA -->
+    <a href="indexalgida.html" class="card">
+      <img src="IMG_algida.JPG" alt="Algida">
+      <h3 class="red">Algida</h3>
+      <p>İsrail ile ilişkileri nedeniyle boykot ediliyor.</p>
+    </a>
+
+    <!-- FANTA -->
+    <a href="indexfanta.html" class="card">
+      <img src="IMG_fanta.JPG" alt="Fanta">
+      <h3 class="red">Fanta</h3>
+      <p>Coca-Cola’ya bağlı olması sebebiyle boykot ediliyor.</p>
+    </a>
+
+    <!-- KFC -->
+    <a href="indexkfc.html" class="card">
+      <img src="IMG_kfc.JPG" alt="KFC">
+      <h3 class="red">KFC</h3>
+      <p>İsrail'e destek verdiği gerekçesiyle boykot çağrılarında yer alıyor.</p>
+    </a>
+
+    <!-- ABC DETERJAN (BOYKOT DEĞİL) -->
+    <a href="indexabcdeterjan.html" class="card">
+      <img src="IMG_abcdeterjan.JPG" alt="ABC Deterjan">
+      <h3 class="green">ABC Deterjan</h3>
+      <p>Boykot listesinde yer almamaktadır.</p>
+    </a>
+
+    <!-- ARIEL -->
+    <a href="indexariel.html" class="card">
+      <img src="IMG_ariel.JPG" alt="Ariel">
+      <h3 class="red">Ariel</h3>
+      <p>İsrail'deki üretimi nedeniyle boykot ediliyor.</p>
+    </a>
+
+    <!-- STARBUCKS -->
+    <a href="indexstarbucks.html" class="card">
+      <img src="IMG_starbucks.JPG" alt="Starbucks">
+      <h3 class="red">Starbucks</h3>
+      <p>İsrail'e destek açıklamaları nedeniyle boykot ediliyor.</p>
+    </a>
+
+    <!-- DANONE -->
+    <a href="indexdanone.html" class="card">
+      <img src="IMG_danone.JPG" alt="Danone">
+      <h3 class="red">Danone</h3>
+      <p>İsrail pazarındaki faaliyetleri nedeniyle boykot çağrılarında.</p>
+    </a>
+
+    <!-- ABC KRAFT HEINZ -->
+    <a href="indexkraftheinz.html" class="card">
+      <img src="IMG_kraftheinz.JPG" alt="Kraft Heinz">
+      <h3 class="red">Kraft Heinz</h3>
+      <p>Boykot listelerinde yer alan şirketlerden biri.</p>
+    </a>
+
+    <!-- ABDI IBRAHIM (BOYKOT DEĞİL) -->
+    <a href="indexabdiibrahim.html" class="card">
+      <img src="IMG_abdiibrahim.JPG" alt="Abdi İbrahim">
+      <h3 class="green">Abdi İbrahim</h3>
+      <p>Boykot listesinde yer almamaktadır.</p>
+    </a>
+
+    <!-- ABDULLAH KIĞILI (BOYKOT DEĞİL) -->
+    <a href="indexabdullahkigili.html" class="card">
+      <img src="IMG_abdullahkigili.JPG" alt="Abdullah Kiğılı">
+      <h3 class="green">Abdullah Kiğılı</h3>
+      <p>Boykot listesinde değildir, yerli bir markadır.</p>
+    </a>
+<!-- BÖRGIR -->
+<a href="indexborgir.html" class="card">
+  <img src="IMG_borgir.JPG" alt="Börgır">
+  <h3 class="red">Börgır</h3>
+  <p>Boykot edilen markalar arasında yer almaktadır.</p>
+</a>
+
+<!-- ACANA -->
+<a href="indexacana.html" class="card">
+  <img src="IMG_acana.JPG" alt="Acana">
+  <h3 class="red">Acana</h3>
+  <p>İsrail destekçisi firmalarla bağlantıları nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- ACE -->
+<a href="indexace.html" class="card">
+  <img src="IMG_ace.JPG" alt="Ace">
+  <h3 class="red">Ace</h3>
+  <p>İsrail’le ticari ilişkileri nedeniyle boykot ediliyor.</p>
+</a>
+
+<!-- ACTIMEL -->
+<a href="indexactimel.html" class="card">
+  <img src="IMG_actimel.JPG" alt="Actimel">
+  <h3 class="red">Actimel</h3>
+  <p>Danone grubuna bağlı olduğu için boykot listesinde yer alıyor.</p>
+</a>
+
+<!-- ACTIONIQ -->
+<a href="indexactioniq.html" class="card">
+  <img src="IMG_actioniq.JPG" alt="ActionIQ">
+  <h3 class="red">ActionIQ</h3>
+  <p>İsrail destekli teknoloji yatırımları nedeniyle boykot ediliyor.</p>
+</a>
+
+<!-- ACTISOFT (BOYKOT DEĞİL) -->
+<a href="indexactisoft.html" class="card">
+  <img src="IMG_actisoft.JPG" alt="Actisoft">
+  <h3 class="green">Actisoft</h3>
+  <p>İsrail menşeli değildir, boykot listesinde yer almaz.</p>
+</a>
+
+<!-- ACTIVA -->
+<a href="indexactiva.html" class="card">
+  <img src="IMG_activa.JPG" alt="Activa">
+  <h3 class="red">Activa</h3>
+  <p>Danone bünyesinde olması nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- ACTIVEX (BOYKOT DEĞİL) -->
+<a href="indexactivex.html" class="card">
+  <img src="IMG_activex.JPG" alt="Activex">
+  <h3 class="green">Activex</h3>
+  <p>Yerli üretimdir, boykot listesinde yer almaz.</p>
+</a>
+
+<!-- ACTIVIA -->
+<a href="indexactivia.html" class="card">
+  <img src="IMG_activia.JPG" alt="Activia">
+  <h3 class="red">Activia</h3>
+  <p>Danone ürünüdür, boykot edilen markalar arasında.</p>
+</a>
+
+<!-- ACUVUE -->
+<a href="indexacuvue.html" class="card">
+  <img src="IMG_acuvue.JPG" alt="Acuvue">
+  <h3 class="red">Acuvue</h3>
+  <p>İsrail'de üretim ve faaliyetleri nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- ADAM TIRAŞ BIÇAĞI -->
+<a href="indexadamtiras.html" class="card">
+  <img src="IMG_adamtiras.JPG" alt="Adam Tıraş Bıçağı">
+  <h3 class="red">Adam Tıraş Bıçağı</h3>
+  <p>Boykot listelerinde yer almaktadır.</p>
+</a>
+
+<!-- ADEL -->
+<a href="indexadel.html" class="card">
+  <img src="IMG_adel.JPG" alt="Adel">
+  <h3 class="red">Adel</h3>
+  <p>İsrail ile olan iş ilişkileri sebebiyle boykot çağrılarındadır.</p>
+</a>
+
+<!-- ADIDAS -->
+<a href="indexadidas.html" class="card">
+  <img src="IMG_adidas.JPG" alt="Adidas">
+  <h3 class="red">Adidas</h3>
+  <p>İsrail’le olan ticari bağları nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- ADIDAS GRUP -->
+<a href="indexadidasgrup.html" class="card">
+  <img src="IMG_adidasgrup.JPG" alt="Adidas Grup">
+  <h3 class="red">Adidas Grup</h3>
+  <p>İsrail destekli politikaları nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- ADL (BOYKOT DEĞİL) -->
+<a href="indexadl.html" class="card">
+  <img src="IMG_adl.JPG" alt="ADL">
+  <h3 class="green">ADL</h3>
+  <p>Yerli bir markadır, boykot listesinde yer almaz.</p>
+</a>
+
+<!-- AERIN -->
+<a href="indexaerin.html" class="card">
+  <img src="IMG_aerin.JPG" alt="Aerin">
+  <h3 class="red">Aerin</h3>
+  <p>İsrail bağlantıları nedeniyle boykot edilen markalar arasında.</p>
+</a>
+
+<!-- AESOP -->
+<a href="indexaesop.html" class="card">
+  <img src="IMG_aesop.JPG" alt="Aesop">
+  <h3 class="red">Aesop</h3>
+  <p>İsrail destekli firmalarla çalıştığı için boykot ediliyor.</p>
+</a>
+
+<!-- AFIA GIDA (BOYKOT DEĞİL) -->
+<a href="indexafiagida.html" class="card">
+  <img src="IMG_afia.JPG" alt="Afia Gıda">
+  <h3 class="green">Afia Gıda</h3>
+  <p>Yerli üreticidir, boykot listesinde yer almaz.</p>
+</a>
+
+<!-- AGARTA (BOYKOT DEĞİL) -->
+<a href="indexagarta.html" class="card">
+  <img src="IMG_agarta.JPG" alt="Agarta">
+  <h3 class="green">Agarta</h3>
+  <p>Yerli ve doğal ürünler üretmektedir. Boykot listesinde değildir.</p>
+</a>
+
+<!-- AGRIFOOD MARKETING -->
+<a href="indexagrifood.html" class="card">
+  <img src="IMG_agrifood.JPG" alt="Agrifood Marketing">
+  <h3 class="red">Agrifood Marketing</h3>
+  <p>İsrail merkezli olduğu için boykot edilmektedir.</p>
+</a>
+
+<!-- AIR WICK -->
+<a href="indexairwick.html" class="card">
+  <img src="IMG_airwick.JPG" alt="Air Wick">
+  <h3 class="red">Air Wick</h3>
+  <p>İsrail ile ilişkileri nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AIRBNB -->
+<a href="indexairbnb.html" class="card">
+  <img src="IMG_airbnb.JPG" alt="Airbnb">
+  <h3 class="red">Airbnb</h3>
+  <p>İsrail işgali altındaki bölgelerde faaliyetleri nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AKSİGORTA (BOYKOT DEĞİL) -->
+<a href="indexaksigorta.html" class="card">
+  <img src="IMG_aksigorta.JPG" alt="Aksigorta">
+  <h3 class="green">Aksigorta</h3>
+  <p>Yerli sigorta firmasıdır, boykot listesinde yer almaz.</p>
+</a>
+
+<!-- AKFIX (BOYKOT DEĞİL) -->
+<a href="indexakfix.html" class="card">
+  <img src="IMG_akfix.JPG" alt="Akfix">
+  <h3 class="green">Akfix</h3>
+  <p>Yerli üretimdir, boykot listesinde değildir.</p>
+</a>
+
+<!-- AKMINA -->
+<a href="indexakmina.html" class="card">
+  <img src="IMG_akmina.JPG" alt="Akmina">
+  <h3 class="red">Akmina</h3>
+  <p>Boykot listelerinde adı geçen içecek markalarındandır.</p>
+</a>
+
+<!-- AKMINA MADEN SUYU -->
+<a href="indexakminasu.html" class="card">
+  <img src="IMG_akminasu.JPG" alt="Akmina Maden Suyu">
+  <h3 class="red">Akmina Maden Suyu</h3>
+  <p>Marka yapısı nedeniyle boykot çağrılarındadır.</p>
+</a>
+
+<!-- AKYUDUM (BOYKOT DEĞİL) -->
+<a href="indexakyudum.html" class="card">
+  <img src="IMG_akyudum.JPG" alt="Akyudum">
+  <h3 class="green">Akyudum</h3>
+  <p>Yerli üreticidir, boykot edilmemektedir.</p>
+</a>
+
+<!-- AKZER (BOYKOT DEĞİL) -->
+<a href="indexakzer.html" class="card">
+  <img src="IMG_akzer.JPG" alt="Akzer">
+  <h3 class="green">Akzer</h3>
+  <p>Yerli ve doğal ürün üreticisidir, boykot listesinde yer almaz.</p>
+</a>
+
+<!-- AKINSOFT (BOYKOT DEĞİL) -->
+<a href="indexakinsoft.html" class="card">
+  <img src="IMG_akinsoft.JPG" alt="Akınsoft">
+  <h3 class="green">Akınsoft</h3>
+  <p>Yerli yazılım firmasıdır. Boykot listesinde yer almaz.</p>
+</a>
+
+<!-- AKŞAM (BOYKOT DEĞİL) -->
+<a href="indexaksam.html" class="card">
+  <img src="IMG_aksam.JPG" alt="Akşam">
+  <h3 class="green">Akşam</h3>
+  <p>Yerli medya kuruluşudur, boykot edilmemektedir.</p>
+</a>
+
+<!-- ALASKA AIR -->
+<a href="indexalaskaair.html" class="card">
+  <img src="IMG_alaskaair.JPG" alt="Alaska Air">
+  <h3 class="red">Alaska Air</h3>
+  <p>İsrail ile ticari ilişkileri nedeniyle boykot edilen markalar arasındadır.</p>
+</a>
+
+<!-- ALAÇAM -->
+<a href="indexalacam.html" class="card">
+  <img src="IMG_alacam.JPG" alt="Alaçam">
+  <h3 class="red">Alaçam</h3>
+  <p>Boykot listelerinde adı geçen firmalardan biridir.</p>
+</a>
+
+<!-- ALBENİ -->
+<a href="indexalbeni.html" class="card">
+  <img src="IMG_albeni.JPG" alt="Albeni">
+  <h3 class="red">Albeni</h3>
+  <p>Üretici firmanın boykot listelerinde yer alması nedeniyle boykot edilmektedir.</p>
+</a>
+<!-- ALGIDA MAX -->
+<a href="indexalgidamax.html" class="card">
+  <img src="IMG_algidamax.JPG" alt="Algida Max">
+  <h3 class="red">Algida Max</h3>
+  <p>İsrail bağlantılı Unilever bünyesinde olduğu için boykot edilmektedir.</p>
+</a>
+
+<!-- ALLIANZ -->
+<a href="indexallianz.html" class="card">
+  <img src="IMG_allianz.JPG" alt="Allianz">
+  <h3 class="red">Allianz</h3>
+  <p>İsrail ile ticari ilişkileri nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- ALO -->
+<a href="indexalo.html" class="card">
+  <img src="IMG_alo.JPG" alt="Alo">
+  <h3 class="red">Alo</h3>
+  <p>Procter & Gamble markasıdır, boykot edilen firmalar arasında yer alır.</p>
+</a>
+
+<!-- ALPELLA -->
+<a href="indexalpella.html" class="card">
+  <img src="IMG_alpella.JPG" alt="Alpella">
+  <h3 class="red">Alpella</h3>
+  <p>Üretici firmanın İsrail ile ilişkileri nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- ALPRO -->
+<a href="indexalpro.html" class="card">
+  <img src="IMG_alpro.JPG" alt="Alpro">
+  <h3 class="red">Alpro</h3>
+  <p>Danone grubuna ait olduğu için boykot edilmektedir.</p>
+</a>
+
+<!-- ALTOIDS -->
+<a href="indexaltoids.html" class="card">
+  <img src="IMG_altoids.JPG" alt="Altoids">
+  <h3 class="red">Altoids</h3>
+  <p>Boykot çağrılarında adı geçen markalardan biridir.</p>
+</a>
+
+<!-- ALTUNSA (BOYKOT DEĞİL) -->
+<a href="indexaltunsa.html" class="card">
+  <img src="IMG_altunsa.JPG" alt="Altunsa">
+  <h3 class="green">Altunsa</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ALTINBAŞ (BOYKOT DEĞİL) -->
+<a href="indexaltinbas.html" class="card">
+  <img src="IMG_altinbas.JPG" alt="Altınbaş">
+  <h3 class="green">Altınbaş</h3>
+  <p>Yerli kuyumculuk markasıdır, boykot listesinde yer almaz.</p>
+</a>
+
+<!-- ALTINKILIÇ (BOYKOT DEĞİL) -->
+<a href="indexaltinkilic.html" class="card">
+  <img src="IMG_altinkilic.JPG" alt="Altınkılıç">
+  <h3 class="green">Altınkılıç</h3>
+  <p>Yerli bir süt ve süt ürünleri markasıdır. Boykot edilmemektedir.</p>
+</a>
+
+<!-- ALTINYILDIZ (BOYKOT DEĞİL) -->
+<a href="indexaltinyildiz.html" class="card">
+  <img src="IMG_altinyildiz.JPG" alt="Altınyıldız">
+  <h3 class="green">Altınyıldız</h3>
+  <p>Yerli bir giyim markasıdır, boykot listesinde yer almaz.</p>
+</a>
+
+<!-- ALWAYS -->
+<a href="indexalways.html" class="card">
+  <img src="IMG_always.JPG" alt="Always">
+  <h3 class="red">Always</h3>
+  <p>Procter & Gamble markasıdır, İsrail ile bağları nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AMAZON -->
+<a href="indexamazon.html" class="card">
+  <img src="IMG_amazon.JPG" alt="Amazon">
+  <h3 class="red">Amazon</h3>
+  <p>İsrail'e açık desteği ve ticari faaliyetleri nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AMAZON CLOUDFRONT -->
+<a href="indexcloudfront.html" class="card">
+  <img src="IMG_cloudfront.JPG" alt="Amazon CloudFront">
+  <h3 class="red">Amazon CloudFront</h3>
+  <p>Amazon Web Services hizmetidir, boykot edilen teknolojik altyapılardan biridir.</p>
+</a>
+
+<!-- AMAZON CO. -->
+<a href="indexamazonco.html" class="card">
+  <img src="IMG_amazonco.JPG" alt="Amazon Co.">
+  <h3 class="red">Amazon Co.</h3>
+  <p>Amazon grubuna bağlı tüm şirketler boykot kapsamındadır.</p>
+</a>
+
+<!-- AMAZON PRIME -->
+<a href="indexamazonprime.html" class="card">
+  <img src="IMG_amazonprime.JPG" alt="Amazon Prime">
+  <h3 class="red">Amazon Prime</h3>
+  <p>Amazon’a ait dijital içerik platformu olarak boykot edilmektedir.</p>
+</a>
+<!-- AMBI PUR -->
+<a href="indexambipur.html" class="card">
+  <img src="IMG_ambipur.JPG" alt="Ambi Pur">
+  <h3 class="red">Ambi Pur</h3>
+  <p>İsrail ile bağlantılı olduğu için boykot edilmektedir.</p>
+</a>
+
+<!-- AMD -->
+<a href="indexamd.html" class="card">
+  <img src="IMG_amd.JPG" alt="AMD">
+  <h3 class="red">AMD</h3>
+  <p>İsrail'e açık ticari ilişkiler nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AMERICAN GIRL -->
+<a href="indexamericangirl.html" class="card">
+  <img src="IMG_americangirl.JPG" alt="American Girl">
+  <h3 class="red">American Girl</h3>
+  <p>İsrail destekçisi bir markadır ve boykot edilmektedir.</p>
+</a>
+
+<!-- AMERICAN EAGLE -->
+<a href="indexamericaneagle.html" class="card">
+  <img src="IMG_americaneagle.JPG" alt="American Eagle">
+  <h3 class="red">American Eagle</h3>
+  <p>İsrail'e olan bağları nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AMERICAN EXPRESS -->
+<a href="indexamericanexpress.html" class="card">
+  <img src="IMG_americanexpress.JPG" alt="American Express">
+  <h3 class="red">American Express</h3>
+  <p>İsrail'deki iş bağlantıları nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AMERICAN HERITAGE -->
+<a href="indexamericanheritage.html" class="card">
+  <img src="IMG_americanheritage.JPG" alt="American Heritage">
+  <h3 class="red">American Heritage</h3>
+  <p>İsrail ile olan ticaret ilişkileri nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AMİGO KURUYEMİŞ -->
+<a href="indexamigokuruyemis.html" class="card">
+  <img src="IMG_amigokuruyemis.JPG" alt="Amigo Kuruyemiş">
+  <h3 class="red">Amigo Kuruyemiş</h3>
+  <p>Boykot edilme sebebi, firma İsrail ile bağlantılıdır.</p>
+</a>
+
+<!-- ANADOLU SİGORTA (BOYKOT DEĞİL) -->
+<a href="indexanadolusigorta.html" class="card">
+  <img src="IMG_anadolusigorta.JPG" alt="Anadolu Sigorta">
+  <h3 class="green">Anadolu Sigorta</h3>
+  <p>Yerli bir sigorta firmasıdır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ANICURA -->
+<a href="indexanicura.html" class="card">
+  <img src="IMG_anicura.JPG" alt="Anicura">
+  <h3 class="red">Anicura</h3>
+  <p>İsrail destekçisi bir marka olarak boykot edilmektedir.</p>
+</a>
+
+<!-- ANKARA MAKARNA (BOYKOT DEĞİL) -->
+<a href="indexankaramakna.html" class="card">
+  <img src="IMG_ankaramakarna.JPG" alt="Ankara Makarna">
+  <h3 class="green">Ankara Makarna</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ANKARA SİGORTA (BOYKOT DEĞİL) -->
+<a href="indexankarasigorta.html" class="card">
+  <img src="IMG_ankarasigorta.JPG" alt="Ankara Sigorta">
+  <h3 class="green">Ankara Sigorta</h3>
+  <p>Yerli bir sigorta firmasıdır, boykot edilmiyor.</p>
+</a>
+
+<!-- ANTECH -->
+<a href="indexantech.html" class="card">
+  <img src="IMG_antech.JPG" alt="Antech">
+  <h3 class="red">Antech</h3>
+  <p>Boykot edilme sebebi, İsrail bağlantılı faaliyetleri.</p>
+</a>
+
+<!-- APPLE -->
+<a href="indexapple.html" class="card">
+  <img src="IMG_apple.JPG" alt="Apple">
+  <h3 class="red">Apple</h3>
+  <p>İsrail'e destek veren firmalar arasında yer almaktadır.</p>
+</a>
+
+<!-- APTAMIL -->
+<a href="indexaptamil.html" class="card">
+  <img src="IMG_aptamil.JPG" alt="Aptamil">
+  <h3 class="red">Aptamil</h3>
+  <p>Boykot edilme sebebi, firmanın İsrail ile bağlantıları.</p>
+</a>
+
+<!-- AQUAFINE -->
+<a href="indexaquafine.html" class="card">
+  <img src="IMG_aquafine.JPG" alt="Aquafine">
+  <h3 class="red">Aquafine</h3>
+  <p>Boykot edilen markalardan biridir, İsrail bağlantısı nedeniyle.</p>
+</a>
+
+<!-- AQUAFRESH -->
+<a href="indexaquafresh.html" class="card">
+  <img src="IMG_aquafresh.JPG" alt="Aquafresh">
+  <h3 class="red">Aquafresh</h3>
+  <p>Procter & Gamble markasıdır ve boykot edilmektedir.</p>
+</a>
+
+<!-- AQUARIAN -->
+<a href="indexaquarian.html" class="card">
+  <img src="IMG_aquarian.JPG" alt="Aquarian">
+  <h3 class="red">Aquarian</h3>
+  <p>İsrail destekli bir markadır, boykot edilmektedir.</p>
+</a>
+
+<!-- AQUARIUS -->
+<a href="indexaquarius.html" class="card">
+  <img src="IMG_aquarius.JPG" alt="Aquarius">
+  <h3 class="red">Aquarius</h3>
+  <p>İsrail ile olan iş ilişkileri nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AQUENCE -->
+<a href="indexaquence.html" class="card">
+  <img src="IMG_aquence.JPG" alt="Aquence">
+  <h3 class="red">Aquence</h3>
+  <p>İsrail malıdır, boykot edilmektedir.</p>
+</a>
+
+<!-- ARBELLA MAKARNA (BOYKOT DEĞİL) -->
+<a href="indexarbellamakna.html" class="card">
+  <img src="IMG_arbellamakna.JPG" alt="Arbella Makarna">
+  <h3 class="green">Arbella Makarna</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ARDEX (BOYKOT DEĞİL) -->
+<a href="indexardex.html" class="card">
+  <img src="IMG_ardex.JPG" alt="Ardex">
+  <h3 class="green">Ardex</h3>
+  <p>Yerli bir yapı malzemeleri markasıdır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ARENTSFOXSCHIFF -->
+<a href="indexarentsfoxschiff.html" class="card">
+  <img src="IMG_arentsfoxschiff.JPG" alt="ArentsFoxSchiff">
+  <h3 class="red">ArentsFoxSchiff</h3>
+  <p>İsrail ile bağlantıları bulunan bir firmadır ve boykot edilmektedir.</p>
+</a>
+
+<!-- ARİFOĞLU (BOYKOT DEĞİL) -->
+<a href="indexarifoglu.html" class="card">
+  <img src="IMG_arifoglu.JPG" alt="Arifoğlu">
+  <h3 class="green">Arifoğlu</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ARKO KREM (BOYKOT DEĞİL) -->
+<a href="indexarkokrem.html" class="card">
+  <img src="IMG_arkokrem.JPG" alt="Arko Krem">
+  <h3 class="green">Arko Krem</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+<!-- ARMAĞAN GİYİM (BOYKOT DEĞİL) -->
+<a href="indexarmagangiyim.html" class="card">
+  <img src="IMG_armagangiyim.JPG" alt="Armağan Giyim">
+  <h3 class="green">Armağan Giyim</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ARMAĞAN OYUNCAK (BOYKOT DEĞİL) -->
+<a href="indexarmaganoyuncak.html" class="card">
+  <img src="IMG_armaganoyuncak.JPG" alt="Armağan Oyuncak">
+  <h3 class="green">Armağan Oyuncak</h3>
+  <p>Yerli bir oyuncak markasıdır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ARMINE (BOYKOT DEĞİL) -->
+<a href="indexarmine.html" class="card">
+  <img src="IMG_armine.JPG" alt="Armine">
+  <h3 class="green">Armine</h3>
+  <p>Yerli bir giyim markasıdır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ARNICA (BOYKOT DEĞİL) -->
+<a href="indexarnica.html" class="card">
+  <img src="IMG_arnica.JPG" alt="Arnica">
+  <h3 class="green">Arnica</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- AROMA (BOYKOT DEĞİL) -->
+<a href="indexaroma.html" class="card">
+  <img src="IMG_aroma.JPG" alt="Aroma">
+  <h3 class="green">Aroma</h3>
+  <p>Yerli bir içecek markasıdır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ARTEMA -->
+<a href="indexartema.html" class="card">
+  <img src="IMG_artema.JPG" alt="Artema">
+  <h3 class="red">Artema</h3>
+  <p>İsrail bağlantıları nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- ARTUKBEY KAHVE (BOYKOT DEĞİL) -->
+<a href="indexartukbeykahve.html" class="card">
+  <img src="IMG_artukbeykahve.JPG" alt="Artukbey Kahve">
+  <h3 class="green">Artukbey Kahve</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ARZUM (BOYKOT DEĞİL) -->
+<a href="indexarzum.html" class="card">
+  <img src="IMG_arzum.JPG" alt="Arzum">
+  <h3 class="green">Arzum</h3>
+  <p>Yerli bir elektronik markasıdır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ARÇELİK -->
+<a href="indexarcelik.html" class="card">
+  <img src="IMG_arcelik.JPG" alt="Arçelik">
+  <h3 class="red">Arçelik</h3>
+  <p>İsrail ile işbirlikleri nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- ARICIOĞLU (BOYKOT DEĞİL) -->
+<a href="indexaricioglu.html" class="card">
+  <img src="IMG_aricioglu.JPG" alt="Arıcıoğlu">
+  <h3 class="green">Arıcıoğlu</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ARILAC (BOYKOT DEĞİL) -->
+<a href="indexarilac.html" class="card">
+  <img src="IMG_arilac.JPG" alt="Arılac">
+  <h3 class="green">Arılac</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ASCEND (BOYKOT DEĞİL) -->
+<a href="indexascend.html" class="card">
+  <img src="IMG_ascend.JPG" alt="Ascend">
+  <h3 class="green">Ascend</h3>
+  <p>Boykot edilmeyen bir markadır.</p>
+</a>
+
+<!-- ASIA VD -->
+<a href="indexasiavd.html" class="card">
+  <img src="IMG_asiavd.JPG" alt="Asia VD">
+  <h3 class="red">Asia VD</h3>
+  <p>İsrail ile bağlantıları nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- ASICS -->
+<a href="indexasics.html" class="card">
+  <img src="IMG_asics.JPG" alt="Asics">
+  <h3 class="red">Asics</h3>
+  <p>İsrail ile ticaret yapmaktadır, boykot edilmektedir.</p>
+</a>
+
+<!-- ASPEROX (BOYKOT DEĞİL) -->
+<a href="indexasperox.html" class="card">
+  <img src="IMG_asperox.JPG" alt="Asperox">
+  <h3 class="green">Asperox</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ASPİLSAN (BOYKOT DEĞİL) -->
+<a href="indexaspilsan.html" class="card">
+  <img src="IMG_aspilsan.JPG" alt="Aspilsan">
+  <h3 class="green">Aspilsan</h3>
+  <p>Yerli bir firmadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ASPİRİN -->
+<a href="indexaspirin.html" class="card">
+  <img src="IMG_aspirin.JPG" alt="Aspirin">
+  <h3 class="red">Aspirin</h3>
+  <p>İsrail destekli bir firma olup boykot edilmektedir.</p>
+</a>
+
+<!-- ASPİRİX (BOYKOT DEĞİL) -->
+<a href="indexaspirix.html" class="card">
+  <img src="IMG_aspirix.JPG" alt="Aspirix">
+  <h3 class="green">Aspirix</h3>
+  <p>Boykot edilmeyen bir markadır.</p>
+</a>
+
+<!-- ASSU (BOYKOT DEĞİL) -->
+<a href="indexassu.html" class="card">
+  <img src="IMG_assu.JPG" alt="Assu">
+  <h3 class="green">Assu</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- ASTEL BANT (BOYKOT DEĞİL) -->
+<a href="indexastelbant.html" class="card">
+  <img src="IMG_astelbant.JPG" alt="Astel Bant">
+  <h3 class="green">Astel Bant</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- ASTRA -->
+<a href="indexastra.html" class="card">
+  <img src="IMG_astra.JPG" alt="Astra">
+  <h3 class="red">Astra</h3>
+  <p>İsrail ile olan iş bağlantıları nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- ATELIER GELARTO -->
+<a href="indexateliergelarto.html" class="card">
+  <img src="IMG_ateliergelarto.JPG" alt="Atelier Gelarto">
+  <h3 class="red">Atelier Gelarto</h3>
+  <p>İsrail ile olan ticaret ilişkilerinden dolayı boykot edilmektedir.</p>
+</a>
+
+<!-- ATLASGLOBAL (BOYKOT DEĞİL) -->
+<a href="indexatlasglobal.html" class="card">
+  <img src="IMG_atlasglobal.JPG" alt="AtlasGlobal">
+  <h3 class="green">AtlasGlobal</h3>
+  <p>Boykot edilmemektedir, yerli bir havayolu şirketidir.</p>
+</a>
+
+<!-- ATLASSIAN -->
+<a href="indexatlassian.html" class="card">
+  <img src="IMG_atlassian.JPG" alt="Atlassian">
+  <h3 class="red">Atlassian</h3>
+  <p>İsrail destekçisi bir teknoloji firmasıdır, boykot edilmektedir.</p>
+</a>
+
+<!-- AUDI -->
+<a href="indexaudi.html" class="card">
+  <img src="IMG_audi.JPG" alt="Audi">
+  <h3 class="red">Audi</h3>
+  <p>İsrail ile olan işbirlikleri nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AUTHENTIC BC -->
+<a href="indexauthenticbc.html" class="card">
+  <img src="IMG_authenticbc.JPG" alt="Authentic BC">
+  <h3 class="red">Authentic BC</h3>
+  <p>İsrail destekçisi bir markadır, boykot edilmektedir.</p>
+</a>
+
+<!-- AUTHENTIC BRANDS -->
+<a href="indexauthenticbrands.html" class="card">
+  <img src="IMG_authenticbrands.JPG" alt="Authentic Brands">
+  <h3 class="red">Authentic Brands</h3>
+  <p>İsrail ile bağlantıları nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AVEDA -->
+<a href="indexaveda.html" class="card">
+  <img src="IMG_aveda.JPG" alt="Aveda">
+  <h3 class="red">Aveda</h3>
+  <p>İsrail destekli bir markadır, boykot edilmektedir.</p>
+</a>
+
+<!-- AVEEENO -->
+<a href="indexaveeno.html" class="card">
+  <img src="IMG_aveeno.JPG" alt="Aveeno">
+  <h3 class="red">Aveeno</h3>
+  <p>İsrail ile olan ticaret ilişkileri nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AVERYDENNIS -->
+<a href="indexaverydennis.html" class="card">
+  <img src="IMG_averydennis.JPG" alt="Averydennis">
+  <h3 class="red">Averydennis</h3>
+  <p>İsrail ile bağlantıları nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AVIVA -->
+<a href="indexaviva.html" class="card">
+  <img src="IMG_aviva.JPG" alt="Aviva">
+  <h3 class="red">Aviva</h3>
+  <p>İsrail destekçisi bir firma olarak boykot edilmektedir.</p>
+</a>
+
+<!-- AVVA (BOYKOT DEĞİL) -->
+<a href="indexavva.html" class="card">
+  <img src="IMG_avva.JPG" alt="Avva">
+  <h3 class="green">Avva</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- AXE -->
+<a href="indexaxe.html" class="card">
+  <img src="IMG_axe.JPG" alt="Axe">
+  <h3 class="red">Axe</h3>
+  <p>İsrail ile işbirliği nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- AXELSPRINGER -->
+<a href="indexaxelspringer.html" class="card">
+  <img src="IMG_axelspringer.JPG" alt="Axelspringer">
+  <h3 class="red">Axelspringer</h3>
+  <p>İsrail destekli bir medya firmasıdır, boykot edilmektedir.</p>
+</a>
+
+<!-- AY-YILDIZ (BOYKOT DEĞİL) -->
+<a href="indexayyildiz.html" class="card">
+  <img src="IMG_ayyildiz.JPG" alt="Ay-Yıldız">
+  <h3 class="green">Ay-Yıldız</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- AYRAN SU (BOYKOT DEĞİL) -->
+<a href="indexayransu.html" class="card">
+  <img src="IMG_ayransu.JPG" alt="Ayran Su">
+  <h3 class="green">Ayran Su</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+<!-- AYTAC -->
+<a href="indexaytac.html" class="card">
+  <img src="IMG_aytac.JPG" alt="Aytaç">
+  <h3 class="red">Aytaç</h3>
+  <p>Boykot listesinde yer alıyor.</p>
+</a>
+
+<!-- AYTEMİZ (BOYKOT DEĞİL) -->
+<a href="indexaytemiz.html" class="card">
+  <img src="IMG_aytemiz.JPG" alt="Aytemiz">
+  <h3 class="green">Aytemiz</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- B&G STORE (BOYKOT DEĞİL) -->
+<a href="indexbgstore.html" class="card">
+  <img src="IMG_bgstore.JPG" alt="B&G Store">
+  <h3 class="green">B&G Store</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BABY GO (BOYKOT DEĞİL) -->
+<a href="indexbabygo.html" class="card">
+  <img src="IMG_babygo.JPG" alt="Baby Go">
+  <h3 class="green">Baby Go</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BABY GOAT (BOYKOT DEĞİL) -->
+<a href="indexbabygoat.html" class="card">
+  <img src="IMG_babygoat.JPG" alt="Baby Goat">
+  <h3 class="green">Baby Goat</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BABY ONE (BOYKOT DEĞİL) -->
+<a href="indexbabyone.html" class="card">
+  <img src="IMG_babyone.JPG" alt="Baby One">
+  <h3 class="green">Baby One</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BABY TV -->
+<a href="indexbabytv.html" class="card">
+  <img src="IMG_babytv.JPG" alt="Baby TV">
+  <h3 class="red">Baby TV</h3>
+  <p>İsrail bağlantılı olduğu gerekçesiyle boykot edilmektedir.</p>
+</a>
+
+<!-- BADE NATURAL (BOYKOT DEĞİL) -->
+<a href="indexbadenatural.html" class="card">
+  <img src="IMG_badenatural.JPG" alt="Bade Natural">
+  <h3 class="green">Bade Natural</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BADOIT -->
+<a href="indexbadoit.html" class="card">
+  <img src="IMG_badoit.JPG" alt="Badoit">
+  <h3 class="red">Badoit</h3>
+  <p>Boykot edilen markalar arasında yer almaktadır.</p>
+</a>
+
+<!-- BAHÇIVAN (BOYKOT DEĞİL) -->
+<a href="indexbahcivan.html" class="card">
+  <img src="IMG_bahcivan.JPG" alt="Bahçıvan">
+  <h3 class="green">Bahçıvan</h3>
+  <p>Yerli üretimdir, boykot edilmemektedir.</p>
+</a>
+
+<!-- BAIN COMPANY -->
+<a href="indexbain.html" class="card">
+  <img src="IMG_bain.JPG" alt="Bain Company">
+  <h3 class="red">Bain Company</h3>
+  <p>İsrail ile iş birlikleri nedeniyle boykot ediliyor.</p>
+</a>
+
+<!-- BAKEN ETS -->
+<a href="indexbakenets.html" class="card">
+  <img src="IMG_bakenets.JPG" alt="Baken Ets">
+  <h3 class="red">Baken Ets</h3>
+  <p>Boykot listesinde yer almaktadır.</p>
+</a>
+
+<!-- BALAT HASTANESİ -->
+<a href="indexbalathastanesi.html" class="card">
+  <img src="IMG_balathastanesi.JPG" alt="Balat Hastanesi">
+  <h3 class="red">Balat Hastanesi</h3>
+  <p>Boykot edilen kurumlar arasında yer alıyor.</p>
+</a>
+
+<!-- BALISTO -->
+<a href="indexbalisto.html" class="card">
+  <img src="IMG_balisto.JPG" alt="Balisto">
+  <h3 class="red">Balisto</h3>
+  <p>İsrail bağlantısı nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- BALKAN (BOYKOT DEĞİL) -->
+<a href="indexbalkan.html" class="card">
+  <img src="IMG_balkan.JPG" alt="Balkan">
+  <h3 class="green">Balkan</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BALPINARI (BOYKOT DEĞİL) -->
+<a href="indexbalpınarı.html" class="card">
+  <img src="IMG_balpınarı.JPG" alt="Balpınarı">
+  <h3 class="green">Balpınarı</h3>
+  <p>Yerli üretimdir, boykot edilmemektedir.</p>
+</a>
+
+<!-- BAMBI YATAK (BOYKOT DEĞİL) -->
+<a href="indexbambiyatak.html" class="card">
+  <img src="IMG_bambiyatak.JPG" alt="Bambi Yatak">
+  <h3 class="green">Bambi Yatak</h3>
+  <p>Yerli üretimdir, boykot edilmemektedir.</p>
+</a>
+
+<!-- BANANA REPUBLIC -->
+<a href="indexbananarepublic.html" class="card">
+  <img src="IMG_bananarepublic.JPG" alt="Banana Republic">
+  <h3 class="red">Banana Republic</h3>
+  <p>İsrail ile ilişkileri nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- BANAT (BOYKOT DEĞİL) -->
+<a href="indexbanat.html" class="card">
+  <img src="IMG_banat.JPG" alt="Banat">
+  <h3 class="green">Banat</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BANFIELD PET HOSPITAL -->
+<a href="indexbanfield.html" class="card">
+  <img src="IMG_banfield.JPG" alt="Banfield Pet Hospital">
+  <h3 class="red">Banfield Pet Hospital</h3>
+  <p>Boykot edilen markalardan biridir.</p>
+</a>
+
+<!-- BANK OF AMERICA -->
+<a href="indexbankofamerica.html" class="card">
+  <img src="IMG_bankofamerica.JPG" alt="Bank of America">
+  <h3 class="red">Bank of America</h3>
+  <p>İsrail’e destek nedeniyle boykot ediliyor.</p>
+</a>
+<!-- BARBIE -->
+<a href="indexbarbie.html" class="card">
+  <img src="IMG_barbie.JPG" alt="Barbie">
+  <h3 class="red">Barbie</h3>
+  <p>İsrail bağlantılı olduğu için boykot edilmektedir.</p>
+</a>
+
+<!-- BARILLA -->
+<a href="indexbarilla.html" class="card">
+  <img src="IMG_barilla.JPG" alt="Barilla">
+  <h3 class="red">Barilla</h3>
+  <p>İsrail'e destek verdiği için boykot edilmektedir.</p>
+</a>
+
+<!-- BATH BODY WORKS -->
+<a href="indexbathbodyworks.html" class="card">
+  <img src="IMG_bathbodyworks.JPG" alt="Bath Body Works">
+  <h3 class="red">Bath Body Works</h3>
+  <p>İsrail'e destek verdiği için boykot edilmektedir.</p>
+</a>
+<!-- BAĞ POST GROUP -->
+<a href="indexbagpostgroup.html" class="card">
+  <img src="IMG_bagpostgroup.JPG" alt="Bağ Post Group">
+  <h3 class="red">Baupostgroup</h3>
+  <p>İsrail bağlantılı olduğu için boykot edilmektedir.</p>
+</a>
+
+<!-- BAYDÖNER (BOYKOT DEĞİL) -->
+<a href="indexbaydoner.html" class="card">
+  <img src="IMG_baydoner.JPG" alt="Bay Döner">
+  <h3 class="green">Bay Döner</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BAYER -->
+<a href="indexbayer.html" class="card">
+  <img src="IMG_bayer.JPG" alt="Bayer">
+  <h3 class="red">Bayer</h3>
+  <p>İsrail ile iş birliği nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- BAYTEK (BOYKOT DEĞİL) -->
+<a href="indexbaytek.html" class="card">
+  <img src="IMG_baytek.JPG" alt="Baytek">
+  <h3 class="green">Baytek</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BAĞDAT BAHARAT (BOYKOT DEĞİL) -->
+<a href="indexbagdatbaharat.html" class="card">
+  <img src="IMG_bagdatbaharat.JPG" alt="Bağdat Baharat">
+  <h3 class="green">Bağdat Baharat</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BAŞAK TRAKTÖR (BOYKOT DEĞİL) -->
+<a href="indexbasaktraktor.html" class="card">
+  <img src="IMG_basaktraktor.JPG" alt="Başak Traktör">
+  <h3 class="green">Başak Traktör</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BAŞYAZICI (BOYKOT DEĞİL) -->
+<a href="indexbasyazici.html" class="card">
+  <img src="IMG_basyazici.JPG" alt="Başyazıcı">
+  <h3 class="green">Başyazıcı</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BCG -->
+<a href="indexbcg.html" class="card">
+  <img src="IMG_bcg.JPG" alt="BCG">
+  <h3 class="red">BCG</h3>
+  <p>İsrail ile iş birliği nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- BEBELAK -->
+<a href="indexbebelak.html" class="card">
+  <img src="IMG_bebelak.JPG" alt="Bebelak">
+  <h3 class="red">Bebelac</h3>
+  <p>İsrail'e destek verdiği için boykot edilmektedir.</p>
+</a>
+
+<!-- BECEN -->
+<a href="indexbecen.html" class="card">
+  <img src="IMG_becen.JPG" alt="Becen">
+  <h3 class="red">Becel</h3>
+  <p>İsrail ile iş birliği nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- BENGUY -->
+<a href="indexbenguy.html" class="card">
+  <img src="IMG_benguy.JPG" alt="Benguy">
+  <h3 class="red">Bengay</h3>
+  <p>İsrail'e destek verdiği için boykot edilmektedir.</p>
+</a>
+
+<!-- BENZ ORJİNAL -->
+<a href="indexbenzorjinal.html" class="card">
+  <img src="IMG_benzorjinal.JPG" alt="Benz Orjinal">
+  <h3 class="red">Ben's Original TM</h3>
+  <p>İsrail ile ticari ilişkileri nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- BEPPANTHOLM -->
+<a href="indexbeppantholm.html" class="card">
+  <img src="IMG_beppantholm.JPG" alt="Beppantholm">
+  <h3 class="red">Bepanthol</h3>
+  <p>İsrail ile bağlantılı olduğu için boykot edilmektedir.</p>
+</a>
+
+<!-- BERKŞAİR -->
+<a href="indexberksair.html" class="card">
+  <img src="IMG_berksair.JPG" alt="Berkşair">
+  <h3 class="red">Berkshire Hathaway</h3>
+  <p>İsrail bağlantıları nedeniyle boykot edilmektedir.</p>
+</a>
+
+
+
+<!-- VERSKA -->
+<a href="indexverska.html" class="card">
+  <img src="IMG_verska.JPG" alt="Verska">
+  <h3 class="red">Berska</h3>
+  <p>İsrail ile iş birliği nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- BEPAZARI (BOYKOT DEĞİL) -->
+<a href="indexbepazari.html" class="card">
+  <img src="IMG_bepazari.JPG" alt="Bepazarı">
+  <h3 class="green">Beypazarı</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BEYSU (BOYKOT DEĞİL) -->
+<a href="indexbeysu.html" class="card">
+  <img src="IMG_beysu.JPG" alt="Beysu">
+  <h3 class="green">Beysu</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BIN (BOYKOT DEĞİL) -->
+<a href="indexbin.html" class="card">
+  <img src="IMG_bin.JPG" alt="Bin">
+  <h3 class="green">Bim</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BINANCE -->
+<a href="indexbinance.html" class="card">
+  <img src="IMG_binance.JPG" alt="Binance">
+  <h3 class="red">Binance</h3>
+  <p>İsrail ile bağlantılı olduğu için boykot edilmektedir.</p>
+</a>
+
+<!-- BINGO (BOYKOT DEĞİL) -->
+<a href="indexbingo.html" class="card">
+  <img src="IMG_bingo.JPG" alt="Bingo">
+  <h3 class="green">Bingo</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BIO BELLINDA (BOYKOT DEĞİL) -->
+<a href="indexbiobellinda.html" class="card">
+  <img src="IMG_biobellinda.JPG" alt="Bio Bellinda">
+  <h3 class="green">Bio Bellinda</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BIOBLOSS (BOYKOT DEĞİL) -->
+<a href="indexbiobloss.html" class="card">
+  <img src="IMG_biobloss.JPG" alt="Biobloss">
+  <h3 class="green">Bioblas</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BIOFRAZE -->
+<a href="indexbiofraze.html" class="card">
+  <img src="IMG_biofraze.JPG" alt="Biofraze">
+  <h3 class="red">Biofreeze</h3>
+  <p>İsrail ile iş birliği nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- BIOTHERM -->
+<a href="indexbiotherm.html" class="card">
+  <img src="IMG_biotherm.JPG" alt="Biotherm">
+  <h3 class="red">Biotherm</h3>
+  <p>İsrail bağlantıları nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- BIOTKIN (BOYKOT DEĞİL) -->
+<a href="indexbiotkin.html" class="card">
+  <img src="IMG_biotkin.JPG" alt="Biotkin">
+  <h3 class="green">Bioxcin</h3>
+  <p>Yerli bir markadır, boykot edilmemektedir.</p>
+</a>
+
+<!-- BİRŞAH -->
+<a href="indexbirshah.html" class="card">
+  <img src="IMG_birshah.JPG" alt="Birşah">
+  <h3 class="red">Birşah</h3>
+  <p>İsrail ile iş birliği nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- BİRŞAH KREMA -->
+<a href="indexbirshahkrema.html" class="card">
+  <img src="IMG_birshahkrema.JPG" alt="Birşah Krema">
+  <h3 class="red">Birşah Krema</h3>
+  <p>İsrail'e destek verdiği için boykot edilmektedir.</p>
+</a>
+
+<!-- BITCOIN -->
+<a href="indexbitcoin.html" class="card">
+  <img src="IMG_bitcoin.JPG" alt="Bitcoin">
+  <h3 class="red">Bitcoin</h3>
+  <p>İsrail ile bağlantıları nedeniyle boykot edilmektedir.</p>
+</a>
+<!-- BLACK BRUIN -->
+<a href="indexblackbruin.html" class="card">
+  <img src="IMG_blackbruin.JPG" alt="Black Bruin">
+  <h3 class="green">Black Bruin</h3>
+  <p>Boykot edilmiyor.</p>
+</a>
+
+<!-- BLACKROCK -->
+<a href="indexblackrock.html" class="card">
+  <img src="IMG_blackrock.JPG" alt="BlackRock">
+  <h3 class="red">BlackRock</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BLACKSTONE GROUP -->
+<a href="indexblackstonegroup.html" class="card">
+  <img src="IMG_blackstonegroup.JPG" alt="Blackstone Group">
+  <h3 class="red">Blackstone Group</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BLADE -->
+<a href="indexblade.html" class="card">
+  <img src="IMG_blade.JPG" alt="Blade">
+  <h3 class="green">Blade</h3>
+  <p>Boykot edilmiyor.</p>
+</a>
+
+<!-- BLEND A MED -->
+<a href="indexblendamed.html" class="card">
+  <img src="IMG_blendamed.JPG" alt="Blend-a-med">
+  <h3 class="red">Blend-a-med</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BLENDAX -->
+<a href="indexblendax.html" class="card">
+  <img src="IMG_blendax.JPG" alt="Blendax">
+  <h3 class="red">Blendax</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BLONDME -->
+<a href="indexblondme.html" class="card">
+  <img src="IMG_blondme.JPG" alt="BlondMe">
+  <h3 class="red">BlondMe</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BLOOMBERG -->
+<a href="indexbloomberg.html" class="card">
+  <img src="IMG_bloomberg.JPG" alt="Bloomberg">
+  <h3 class="red">Bloomberg</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BLUETV -->
+<a href="indexbluetv.html" class="card">
+  <img src="IMG_bluetv.JPG" alt="Bluetv">
+  <h3 class="red">Bluetv</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BLUE PEARL -->
+<a href="indexbluepearl.html" class="card">
+  <img src="IMG_bluepearl.JPG" alt="Blue Pearl">
+  <h3 class="red">Blue Pearl</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BMW -->
+<a href="indexbmw.html" class="card">
+  <img src="IMG_bmw.JPG" alt="BMW">
+  <h3 class="red">BMW</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BNP PARIBAS -->
+<a href="indexbnpparibas.html" class="card">
+  <img src="IMG_bnpparibas.JPG" alt="BNP Paribas">
+  <h3 class="red">BNP Paribas</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BOBBI BROWN -->
+<a href="indexbobbibrown.html" class="card">
+  <img src="IMG_bobbibrown.JPG" alt="Bobbi Brown">
+  <h3 class="red">Bobbi Brown</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BOL BOL KETÇAP -->
+<a href="indexbolbolketcap.html" class="card">
+  <img src="IMG_bolbolketcap.JPG" alt="Bol Bol Ketçap">
+  <h3 class="red">Bol Bol Ketçap</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BOMAJA -->
+<a href="indexbomaja.html" class="card">
+  <img src="IMG_bomaja.JPG" alt="Bomaja">
+  <h3 class="red">Bomaja</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BONACURE -->
+<a href="indexbonacure.html" class="card">
+  <img src="IMG_bonacure.JPG" alt="Bonacure">
+  <h3 class="red">Bonacure</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BOOKING HOLDINGS -->
+<a href="indexbookingholdings.html" class="card">
+  <img src="IMG_bookingholdings.JPG" alt="Booking Holdings">
+  <h3 class="red">Booking Holdings</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BOOKING.COM -->
+<a href="indexbookingcom.html" class="card">
+  <img src="IMG_bookingcom.JPG" alt="Booking.com">
+  <h3 class="red">Booking.com</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BORON -->
+<a href="indexboron.html" class="card">
+  <img src="IMG_boron.JPG" alt="Boron">
+  <h3 class="green">Boron</h3>
+  <p>Boykot edilmiyor.</p>
+</a>
+
+<!-- BOSCH -->
+<a href="indexbosch.html" class="card">
+  <img src="IMG_bosch.JPG" alt="Bosch">
+  <h3 class="red">Bosch</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BOUNCE -->
+<a href="indexbounce.html" class="card">
+  <img src="IMG_bounce.JPG" alt="Bounce">
+  <h3 class="red">Bounce</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BOUNTY -->
+<a href="indexbounty.html" class="card">
+  <img src="IMG_bounty.JPG" alt="Bounty">
+  <h3 class="red">Bounty</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BP PETROL -->
+<a href="indexbppetrol.html" class="card">
+  <img src="IMG_bppetrol.JPG" alt="BP Petrol">
+  <h3 class="red">BP Petrol</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BRAUN -->
+<a href="indexbraun.html" class="card">
+  <img src="IMG_braun.JPG" alt="Braun">
+  <h3 class="red">Braun</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BREF -->
+<a href="indexbref.html" class="card">
+  <img src="IMG_bref.JPG" alt="Bref">
+  <h3 class="red">Bref</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BUBBLICIOUS -->
+<a href="indexbubblicious.html" class="card">
+  <img src="IMG_bubblicious.JPG" alt="Bubblicious">
+  <h3 class="red">Bubblicious</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BUCKEYE -->
+<a href="indexbuckeye.html" class="card">
+  <img src="IMG_buckeye.JPG" alt="Buckeye">
+  <h3 class="red">Buckeye</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BUGATTI -->
+<a href="indexbugatti.html" class="card">
+  <img src="IMG_bugatti.JPG" alt="Bugatti">
+  <h3 class="red">Bugatti</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BUNGE GLOBAL SA -->
+<a href="indexbunge.html" class="card">
+  <img src="IMG_bunge.JPG" alt="Bunge Global SA">
+  <h3 class="red">Bunge Global SA</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BURGER KING -->
+<a href="indexburgerking.html" class="card">
+  <img src="IMG_burgerking.JPG" alt="Burger King">
+  <h3 class="red">Burger King</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BURN -->
+<a href="indexburn.html" class="card">
+  <img src="IMG_burn.JPG" alt="Burn">
+  <h3 class="red">Burn</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- BUZDAĞI SU -->
+<a href="indexbuzdagi.html" class="card">
+  <img src="IMG_buzdagi.JPG" alt="Buzdağı Su">
+  <h3 class="green">Buzdağı Su</h3>
+  <p>Boykot edilmiyor.</p>
+</a>
+<!-- BIG RED -->
+<a href="indexbigred.html" class="card">
+  <img src="IMG_bigred.JPG" alt="Big Red">
+  <h3 class="red">Big Red</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CAT CATERPILLAR -->
+<a href="indexcatcaterpillar.html" class="card">
+  <img src="IMG_catcaterpillar.JPG" alt="CAT Caterpillar">
+  <h3 class="red">CAT Caterpillar</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CNN -->
+<a href="indexcnn.html" class="card">
+  <img src="IMG_cnn.JPG" alt="CNN">
+  <h3 class="red">CNN</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CACHAREL -->
+<a href="indexcacharel.html" class="card">
+  <img src="IMG_cacharel.JPG" alt="Cacharel">
+  <h3 class="red">Cacharel</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CADBURY -->
+<a href="indexcadbury.html" class="card">
+  <img src="IMG_cadbury.JPG" alt="Cadbury">
+  <h3 class="red">Cadbury</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CAFE CROWN -->
+<a href="indexcafecrown.html" class="card">
+  <img src="IMG_cafecrown.JPG" alt="Cafe Crown">
+  <h3 class="red">Cafe Crown</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CAFFE NERO -->
+<a href="indexcaffenero.html" class="card">
+  <img src="IMG_caffenero.JPG" alt="Caffe Nero">
+  <h3 class="red">Caffe Nero</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CALGON -->
+<a href="indexcalgon.html" class="card">
+  <img src="IMG_calgon.JPG" alt="Calgon">
+  <h3 class="red">Calgon</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CALVE -->
+<a href="indexcalve.html" class="card">
+  <img src="IMG_calve.JPG" alt="Calve">
+  <h3 class="red">Calve</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CALVIN KLEIN -->
+<a href="indexcalvinklein.html" class="card">
+  <img src="IMG_calvinklein.JPG" alt="Calvin Klein">
+  <h3 class="red">Calvin Klein</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CANBEBE -->
+<a href="indexcanbebe.html" class="card">
+  <img src="IMG_canbebe.JPG" alt="Canbebe">
+  <h3 class="red">Canbebe</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CAPPY -->
+<a href="indexcappy.html" class="card">
+  <img src="IMG_cappy.JPG" alt="Cappy">
+  <h3 class="red">Cappy</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CAPRIHOLDINGS -->
+<a href="indexcapriholdings.html" class="card">
+  <img src="IMG_capriholdings.JPG" alt="Capri Holdings">
+  <h3 class="red">Capri Holdings</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CAPRISUN -->
+<a href="indexcaprisun.html" class="card">
+  <img src="IMG_caprisun.JPG" alt="Capri Sun">
+  <h3 class="red">Capri Sun</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CAREFREE -->
+<a href="indexcarefree.html" class="card">
+  <img src="IMG_carefree.JPG" alt="Carefree">
+  <h3 class="red">Carefree</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CARETRUST REIT -->
+<a href="indexcaretrustreit.html" class="card">
+  <img src="IMG_caretrustreit.JPG" alt="Caretrust REIT">
+  <h3 class="red">Caretrust REIT</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CARGILL -->
+<a href="indexcargill.html" class="card">
+  <img src="IMG_cargill.JPG" alt="Cargill">
+  <h3 class="red">Cargill</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CARREFOUR -->
+<a href="indexcarrefour.html" class="card">
+  <img src="IMG_carrefour.JPG" alt="Carrefour">
+  <h3 class="red">Carrefour</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CARTE DOR -->
+<a href="indexcartedor.html" class="card">
+  <img src="IMG_cartedor.JPG" alt="Carte d'Or">
+  <h3 class="red">Carte d'Or</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CARTOON NETWORK -->
+<a href="indexcartoonnetwork.html" class="card">
+  <img src="IMG_cartoonnetwork.JPG" alt="Cartoon Network">
+  <h3 class="red">Cartoon Network</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CASCADE -->
+<a href="indexcascade.html" class="card">
+  <img src="IMG_cascade.JPG" alt="Cascade">
+  <h3 class="red">Cascade</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CASTROL CAT CHOW -->
+<a href="indexcastrolcatchow.html" class="card">
+  <img src="IMG_castrolcatchow.JPG" alt="Castrol Cat Chow">
+  <h3 class="red">Castrol Cat Chow</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CATERPILLAR -->
+<a href="indexcaterpillar.html" class="card">
+  <img src="IMG_caterpillar.JPG" alt="Caterpillar">
+  <h3 class="red">Caterpillar</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CATSAN -->
+<a href="indexcatsan.html" class="card">
+  <img src="IMG_catsan.JPG" alt="Catsan">
+  <h3 class="red">Catsan</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CELEBRATIONS -->
+<a href="indexcelebrations.html" class="card">
+  <img src="IMG_celebrations.JPG" alt="Celebrations">
+  <h3 class="red">Celebrations</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CENTURY FOX 20TH -->
+<a href="indexcenturyfox20th.html" class="card">
+  <img src="IMG_centuryfox20th.JPG" alt="20th Century Fox">
+  <h3 class="red">20th Century Fox</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CERAVE CERESIT -->
+<a href="indexceraveceresit.html" class="card">
+  <img src="IMG_ceraveceresit.JPG" alt="Cerave Ceresit">
+  <h3 class="red">Cerave Ceresit</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CEYSU -->
+<a href="indexceysu.html" class="card">
+  <img src="IMG_ceysu.JPG" alt="Ceysu">
+  <h3 class="green">Ceysu</h3>
+  <p>Boykot edilmiyor.</p>
+</a>
+<!-- CHAMPION -->
+<a href="indexchampion.html" class="card">
+  <img src="IMG_champion.JPG" alt="Champion">
+  <h3 class="red">Champion</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CHANEL -->
+<a href="indexchanel.html" class="card">
+  <img src="IMG_chanel.JPG" alt="Chanel">
+  <h3 class="red">Chanel</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CHAPMAN AND CUTLER -->
+<a href="indexchapmanandcutler.html" class="card">
+  <img src="IMG_chapmanandcutler.JPG" alt="Chapman and Cutler">
+  <h3 class="red">Chapman and Cutler</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CHAPPIE -->
+<a href="indexchappie.html" class="card">
+  <img src="IMG_chappie.JPG" alt="Chappie">
+  <h3 class="red">Chappie</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CHEAPFLIGHTS -->
+<a href="indexcheapflights.html" class="card">
+  <img src="IMG_cheapflights.JPG" alt="Cheapflights">
+  <h3 class="red">Cheapflights</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CHEETOS -->
+<a href="indexcheetos.html" class="card">
+  <img src="IMG_cheetos.JPG" alt="Cheetos">
+  <h3 class="red">Cheetos</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CHESTER’S -->
+<a href="indexchesters.html" class="card">
+  <img src="IMG_chesters.JPG" alt="Chester’s">
+  <h3 class="red">Chester’s</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CHOKELLA -->
+<a href="indexchokella.html" class="card">
+  <img src="IMG_chokella.JPG" alt="Chokella">
+  <h3 class="red">Chokella</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CIF -->
+<a href="indexcif.html" class="card">
+  <img src="IMG_cif.JPG" alt="Cif">
+  <h3 class="red">Cif</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CILLIT BANG -->
+<a href="indexcillitbang.html" class="card">
+  <img src="IMG_cillitbang.JPG" alt="Cillit Bang">
+  <h3 class="red">Cillit Bang</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CIPSO -->
+<a href="indexcipso.html" class="card">
+  <img src="IMG_cipso.JPG" alt="Cipso">
+  <h3 class="red">Cipso</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CISCO -->
+<a href="indexcisco.html" class="card">
+  <img src="IMG_cisco.JPG" alt="Cisco">
+  <h3 class="red">Cisco</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CITADEL -->
+<a href="indexcitadel.html" class="card">
+  <img src="IMG_citadel.JPG" alt="Citadel">
+  <h3 class="red">Citadel</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CITIBANK -->
+<a href="indexcitibank.html" class="card">
+  <img src="IMG_citibank.JPG" alt="Citibank">
+  <h3 class="red">Citibank</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CLEAN & CLEAR -->
+<a href="indexcleanandclear.html" class="card">
+  <img src="IMG_cleanandclear.JPG" alt="Clean & Clear">
+  <h3 class="red">Clean & Clear</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CLEAR -->
+<a href="indexclear.html" class="card">
+  <img src="IMG_clear.JPG" alt="Clear">
+  <h3 class="red">Clear</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CLEARASIL -->
+<a href="indexclearasil.html" class="card">
+  <img src="IMG_clearasil.JPG" alt="Clearasil">
+  <h3 class="red">Clearasil</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CLIN -->
+<a href="indexclin.html" class="card">
+  <img src="IMG_clin.JPG" alt="Clin">
+  <h3 class="red">Clin</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CLINIQUE -->
+<a href="indexclinique.html" class="card">
+  <img src="IMG_clinique.JPG" alt="Clinique">
+  <h3 class="red">Clinique</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CLIPPER -->
+<a href="indexclipper.html" class="card">
+  <img src="IMG_clipper.JPG" alt="Clipper">
+  <h3 class="red">Clipper</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CLOUDFLARE -->
+<a href="indexcloudflare.html" class="card">
+  <img src="IMG_cloudflare.JPG" alt="Cloudflare">
+  <h3 class="red">Cloudflare</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CNBC-E -->
+<a href="indexcnbce.html" class="card">
+  <img src="IMG_cnbce.JPG" alt="CNBC-E">
+  <h3 class="red">CNBC-E</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- COCA COLA COMPANY -->
+<a href="indexcocacolacompany.html" class="card">
+  <img src="IMG_cocacolacompany.JPG" alt="Coca Cola Company">
+  <h3 class="red">Coca Cola Company</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- COCOAVIA -->
+<a href="indexcocoavia.html" class="card">
+  <img src="IMG_cocoavia.JPG" alt="Cocoavia">
+  <h3 class="red">Cocoavia</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- COFFEE MATE -->
+<a href="indexcoffeemate.html" class="card">
+  <img src="IMG_coffeemate.JPG" alt="Coffee Mate">
+  <h3 class="red">Coffee Mate</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- COFFY -->
+<a href="indexcoffy.html" class="card">
+  <img src="IMG_coffy.JPG" alt="Coffy">
+  <h3 class="red">Coffy</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- COLA TURKA -->
+<a href="indexcolaturka.html" class="card">
+  <img src="IMG_colaturka.JPG" alt="Cola Turka">
+  <h3 class="green">Cola Turka</h3>
+  <p>Boykot edilmiyor.</p>
+</a>
+
+<!-- COLGATE -->
+<a href="indexcolgate.html" class="card">
+  <img src="IMG_colgate.JPG" alt="Colgate">
+  <h3 class="red">Colgate</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- COMBOS -->
+<a href="indexcombos.html" class="card">
+  <img src="IMG_combos.JPG" alt="Combos">
+  <h3 class="red">Combos</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- COMPANIAN FUND -->
+<a href="indexcompanianfund.html" class="card">
+  <img src="IMG_companianfund.JPG" alt="Companian Fund">
+  <h3 class="red">Companian Fund</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CONDE NAST -->
+<a href="indexcondenast.html" class="card">
+  <img src="IMG_condenast.JPG" alt="Conde Nast">
+  <h3 class="red">Conde Nast</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CONKLIN -->
+<a href="indexconklin.html" class="card">
+  <img src="IMG_conklin.JPG" alt="Conklin">
+  <h3 class="red">Conklin</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CONVERSE -->
+<a href="indexconverse.html" class="card">
+  <img src="IMG_converse.JPG" alt="Converse">
+  <h3 class="red">Converse</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- COOK -->
+<a href="indexcook.html" class="card">
+  <img src="IMG_cook.JPG" alt="Cook">
+  <h3 class="green">Cook</h3>
+  <p>Boykot edilmiyor.</p>
+</a>
+
+<!-- COOK PLUS -->
+<a href="indexcookplus.html" class="card">
+  <img src="IMG_cookplus.JPG" alt="Cook Plus">
+  <h3 class="green">Cook Plus</h3>
+  <p>Boykot edilmiyor.</p>
+</a>
+
+<!-- CORNETTO -->
+<a href="indexcornetto.html" class="card">
+  <img src="IMG_cornetto.JPG" alt="Cornetto">
+  <h3 class="red">Cornetto</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+<!-- COSTA COFFEE -->
+<a href="indexcostacoffee.html" class="card">
+  <img src="IMG_costacoffee.JPG" alt="Costa Coffee">
+  <h3 class="red">Costa Coffee</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- COTE D’OR -->
+<a href="indexcotedor.html" class="card">
+  <img src="IMG_cotedor.JPG" alt="Côte d’Or">
+  <h3 class="red">Cote d’or</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- COW & GATE -->
+<a href="indexcowandgate.html" class="card">
+  <img src="IMG_cowandgate.JPG" alt="Cow & Gate">
+  <h3 class="red">Cow & Gate</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CRACKER JACK -->
+<a href="indexcrackerjack.html" class="card">
+  <img src="IMG_crackerjack.JPG" alt="Cracker Jack">
+  <h3 class="red">Cracker Jack</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CRAVE -->
+<a href="indexcrave.html" class="card">
+  <img src="IMG_crave.JPG" alt="Crave">
+  <h3 class="red">Crave</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CREST WHITESTRIPS -->
+<a href="indexcrestwhitestrips.html" class="card">
+  <img src="IMG_crestwhitestrips.JPG" alt="Crest Whitestrips">
+  <h3 class="red">Crest Whitestrips</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- CRUNCH -->
+<a href="indexcrunch.html" class="card">
+  <img src="IMG_crunch.JPG" alt="Crunch">
+  <h3 class="red">Crunch</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DHL GROUP -->
+<a href="indexdhlgroup.html" class="card">
+  <img src="IMG_dhlgroup.JPG" alt="DHL Group">
+  <h3 class="red">DHL Group</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DAIMLER -->
+<a href="indexdaimler.html" class="card">
+  <img src="IMG_daimler.JPG" alt="Daimler">
+  <h3 class="red">Daimler</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DAMAK -->
+<a href="indexdamak.html" class="card">
+  <img src="IMG_damak.JPG" alt="Damak">
+  <h3 class="red">Damak</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DAMLA -->
+<a href="indexdamla.html" class="card">
+  <img src="IMG_damla.JPG" alt="Damla">
+  <h3 class="red">Damla</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DAMLA MADEN SUYU -->
+<a href="indexdamlamadensuyu.html" class="card">
+  <img src="IMG_damlamadensuyu.JPG" alt="Damla Maden Suyu">
+  <h3 class="red">Damla Maden Suyu</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DAMLA MINERAL -->
+<a href="indexdamlamineral.html" class="card">
+  <img src="IMG_damlamineral.JPG" alt="Damla Mineral">
+  <h3 class="red">Damla Mineral</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DANETTE -->
+<a href="indexdanette.html" class="card">
+  <img src="IMG_danette.JPG" alt="Danette">
+  <h3 class="red">Danette</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DANINO -->
+<a href="indexdanino.html" class="card">
+  <img src="IMG_danino.JPG" alt="Danino">
+  <h3 class="red">Danino</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DANISSIMO -->
+<a href="indexdanissimo.html" class="card">
+  <img src="IMG_danissimo.JPG" alt="Danissimo">
+  <h3 class="red">Danissimo</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DANONE GRUP -->
+<a href="indexdanonegrup.html" class="card">
+  <img src="IMG_danonegrup.JPG" alt="Danone Grup">
+  <h3 class="red">Danone Grup</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DARDANEL -->
+<a href="indexdardanel.html" class="card">
+  <img src="IMG_dardanel.JPG" alt="Dardanel">
+  <h3 class="red">Dardanel</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DARPHIN -->
+<a href="indexdarphin.html" class="card">
+  <img src="IMG_darphin.JPG" alt="Darphin">
+  <h3 class="red">Darphin</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DAZ -->
+<a href="indexdaz.html" class="card">
+  <img src="IMG_daz.JPG" alt="Daz">
+  <h3 class="red">Daz</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+<!-- defacto -->
+<a href="indexdaz.html" class="card">
+  <img src="IMG_daz.JPG" alt="Daz">
+  <h3 class="red">Defacto</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DELIRIUMS -->
+<a href="indexdeliriums.html" class="card">
+  <img src="IMG_deliriums.JPG" alt="Deliriums">
+  <h3 class="red">Deliriums</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DELL -->
+<a href="indexdell.html" class="card">
+  <img src="IMG_dell.JPG" alt="Dell">
+  <h3 class="red">Dell</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DELOITTE -->
+<a href="indexdeloitte.html" class="card">
+  <img src="IMG_deloitte.JPG" alt="Deloitte">
+  <h3 class="red">Deloitte</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DELTA AIR LINES -->
+<a href="indexdeltaairlines.html" class="card">
+  <img src="IMG_deltaairlines.JPG" alt="Delta Air Lines">
+  <h3 class="red">Delta Air Lines</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DEPEND -->
+<a href="indexdepend.html" class="card">
+  <img src="IMG_depend.JPG" alt="Depend">
+  <h3 class="red">Depend</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DERBY -->
+<a href="indexderby.html" class="card">
+  <img src="IMG_derby.JPG" alt="Derby">
+  <h3 class="red">Derby</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DERBY LADY -->
+<a href="indexderbylady.html" class="card">
+  <img src="IMG_derbylady.JPG" alt="Derby Lady">
+  <h3 class="red">Derby Lady</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+<!-- DESITIN -->
+<a href="indexdesitin.html" class="card">
+  <img src="IMG_desitin.JPG" alt="Desitin">
+  <h3 class="red">Desitin</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DETTOL -->
+<a href="indexdettol.html" class="card">
+  <img src="IMG_dettol.JPG" alt="Dettol">
+  <h3 class="red">Dettol</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DEUTSCHE BANK -->
+<a href="indexdeutschebank.html" class="card">
+  <img src="IMG_deutschebank.JPG" alt="Deutsche Bank">
+  <h3 class="red">Deutsche Bank</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DEUTSCHE TELEKOM -->
+<a href="indexdeutschetelekom.html" class="card">
+  <img src="IMG_deutschetelekom.JPG" alt="Deutsche Telekom">
+  <h3 class="red">Deutsche Telekom</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DIADERMINE -->
+<a href="indexdiadermine.html" class="card">
+  <img src="IMG_diadermine.JPG" alt="Diadermine">
+  <h3 class="red">Diadermine</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DIDO -->
+<a href="indexdido.html" class="card">
+  <img src="IMG_dido.JPG" alt="Dido">
+  <h3 class="red">Dido</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DIESEL -->
+<a href="indexdiesel.html" class="card">
+  <img src="IMG_diesel.JPG" alt="Diesel">
+  <h3 class="red">Diesel</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DIOR -->
+<a href="indexdior.html" class="card">
+  <img src="IMG_dior.JPG" alt="Dior">
+  <h3 class="red">Dior</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DIOR CHRISTIAN DIOR -->
+<a href="indexdiorchristiandior.html" class="card">
+  <img src="IMG_diorchristiandior.JPG" alt="Dior Christian Dior">
+  <h3 class="red">Dior Christian Dior</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DIPS AND SALSAS -->
+<a href="indexdipsandsalsas.html" class="card">
+  <img src="IMG_dipsandsalsas.JPG" alt="Dips and Salsas">
+  <h3 class="red">Dips and Salsas</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DISCREET -->
+<a href="indexdiscreet.html" class="card">
+  <img src="IMG_discreet.JPG" alt="Discreet">
+  <h3 class="red">Discreet</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DISNEY -->
+<a href="indexdisney.html" class="card">
+  <img src="IMG_disney.JPG" alt="Disney">
+  <h3 class="red">Disney</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DISNEY JUNIOR -->
+<a href="indexdisneyjunior.html" class="card">
+  <img src="IMG_disneyjunior.JPG" alt="Disney Junior">
+  <h3 class="red">Disney Junior</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DIXI -->
+<a href="indexdixi.html" class="card">
+  <img src="IMG_dixi.JPG" alt="Dixi">
+  <h3 class="red">Dixi</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DKNY -->
+<a href="indexdkny.html" class="card">
+  <img src="IMG_dkny.JPG" alt="DKNY">
+  <h3 class="red">DKNY</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DODGE -->
+<a href="indexdodge.html" class="card">
+  <img src="IMG_dodge.JPG" alt="Dodge">
+  <h3 class="red">Dodge</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOG CHOW -->
+<a href="indexdogchow.html" class="card">
+  <img src="IMG_dogchow.JPG" alt="Dog Chow">
+  <h3 class="red">Dog Chow</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOLCE GUSTO -->
+<a href="indexdolcegusto.html" class="card">
+  <img src="IMG_dolcegusto.JPG" alt="Dolce Gusto">
+  <h3 class="red">Dolce Gusto</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOLE FOOD COMPANY -->
+<a href="indexdolefoodcompany.html" class="card">
+  <img src="IMG_dolefoodcompany.JPG" alt="Dole Food Company">
+  <h3 class="red">Dole Food Company</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DALMIO -->
+<a href="indexdalmio.html" class="card">
+  <img src="IMG_dalmio.JPG" alt="Dalmıo">
+  <h3 class="red">Dalmıo</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOMESTOS -->
+<a href="indexdomestos.html" class="card">
+  <img src="IMG_domestos.JPG" alt="Domestos">
+  <h3 class="red">Domestos</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOMINO’S PIZZA -->
+<a href="indexdominos.html" class="card">
+  <img src="IMG_dominos.JPG" alt="Domino’s Pizza">
+  <h3 class="red">Domino’s Pizza</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOMOL -->
+<a href="indexdomol.html" class="card">
+  <img src="IMG_domol.JPG" alt="Domol">
+  <h3 class="red">Domol</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOONA -->
+<a href="indexdoona.html" class="card">
+  <img src="IMG_doona.JPG" alt="Doona">
+  <h3 class="red">Doona</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOST SÜT -->
+<a href="indexdostsut.html" class="card">
+  <img src="IMG_dostsut.JPG" alt="Dost Süt">
+  <h3 class="red">Dost Süt</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOST YOĞURT -->
+<a href="indexdostyogurt.html" class="card">
+  <img src="IMG_dostyogurt.JPG" alt="Dost Yoğurt">
+  <h3 class="red">Dost Yoğurt</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOSTINO -->
+<a href="indexdostino.html" class="card">
+  <img src="IMG_dostino.JPG" alt="Dostino">
+  <h3 class="red">Dostino</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOUBLEMINT -->
+<a href="indexdoublemint.html" class="card">
+  <img src="IMG_doublemint.JPG" alt="Doublemint">
+  <h3 class="red">Doublemint</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOUGLAS ELLIMAN -->
+<a href="indexdouglaselliman.html" class="card">
+  <img src="IMG_douglaselliman.JPG" alt="Douglas Elliman">
+  <h3 class="red">Douglas Elliman</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOVE -->
+<a href="indexdove.html" class="card">
+  <img src="IMG_dove.JPG" alt="Dove">
+  <h3 class="red">Dove</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOVE CHOCOLATE -->
+<a href="indexdovechocolate.html" class="card">
+  <img src="IMG_dovechocolate.JPG" alt="Dove Chocolate">
+  <h3 class="red">Dove Chocolate</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOVE MEN+CARE -->
+<a href="indexdovemencare.html" class="card">
+  <img src="IMG_dovemencare.JPG" alt="Dove Men+Care">
+  <h3 class="red">Dove Men+Care</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOWNY -->
+<a href="indexdowny.html" class="card">
+  <img src="IMG_downy.JPG" alt="Downy">
+  <h3 class="red">Downy</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DOĞADAN -->
+<a href="indexdogadan.html" class="card">
+  <img src="IMG_dogadan.JPG" alt="Doğadan">
+  <h3 class="red">Doğadan</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+<!-- DR. REPPER -->
+<a href="indexdrrepper.html" class="card">
+  <img src="IMG_drrepper.JPG" alt="Dr. Repper">
+  <h3 class="red">Dr. Repper</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DR. JART+ -->
+<a href="indexdrjart.html" class="card">
+  <img src="IMG_drjart.JPG" alt="Dr. Jart+">
+  <h3 class="red">Dr. Jart+</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DREAMIES -->
+<a href="indexdreamies.html" class="card">
+  <img src="IMG_dreamies.JPG" alt="Dreamies">
+  <h3 class="red">Dreamies</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DREFT -->
+<a href="indexdreft.html" class="card">
+  <img src="IMG_dreft.JPG" alt="Dreft">
+  <h3 class="red">Dreft</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DURACELL -->
+<a href="indexduracell.html" class="card">
+  <img src="IMG_duracell.JPG" alt="Duracell">
+  <h3 class="red">Duracell</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- DUREX -->
+<a href="indexdurex.html" class="card">
+  <img src="IMG_durex.JPG" alt="Durex">
+  <h3 class="red">Durex</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- EBAY -->
+<a href="indexebay.html" class="card">
+  <img src="IMG_ebay.JPG" alt="Ebay">
+  <h3 class="red">Ebay</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- EBLY -->
+<a href="indexebly.html" class="card">
+  <img src="IMG_ebly.JPG" alt="Ebly">
+  <h3 class="red">Ebly</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- ECLIPSE -->
+<a href="indexeclipse.html" class="card">
+  <img src="IMG_eclipse.JPG" alt="Eclipse">
+  <h3 class="red">Eclipse</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- EGOISTE -->
+<a href="indexegoiste.html" class="card">
+  <img src="IMG_egoiste.JPG" alt="Egoiste">
+  <h3 class="red">Egoiste</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- EL ISLENO -->
+<a href="indexelisleno.html" class="card">
+  <img src="IMG_elisleno.JPG" alt="El Isleno">
+  <h3 class="red">El Isleno</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- ELIDOR -->
+<a href="indexelidor.html" class="card">
+  <img src="IMG_elidor.JPG" alt="Elidor">
+  <h3 class="red">Elidor</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- ELSEVE -->
+<a href="indexelseve.html" class="card">
+  <img src="IMG_elseve.JPG" alt="Elseve">
+  <h3 class="red">Elseve</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- ENCHANTIMALS -->
+<a href="indexenchantimals.html" class="card">
+  <img src="IMG_enchantimals.JPG" alt="Enchantimals">
+  <h3 class="red">Enchantimals</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- ENDEAVOR -->
+<a href="indexendeavor.html" class="card">
+  <img src="IMG_endeavor.JPG" alt="Endeavor">
+  <h3 class="red">Endeavor</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- ENFAMIL -->
+<a href="indexenfamil.html" class="card">
+  <img src="IMG_enfamil.JPG" alt="Enfamil">
+  <h3 class="red">Enfamil</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- EPAM -->
+<a href="indexepam.html" class="card">
+  <img src="IMG_epam.JPG" alt="Epam">
+  <h3 class="red">Epam</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- EPILADY -->
+<a href="indexepilady.html" class="card">
+  <img src="IMG_epilady.JPG" alt="Epilady">
+  <h3 class="red">Epilady</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- ERIKLI -->
+<a href="indexerikli.html" class="card">
+  <img src="IMG_erikli.JPG" alt="Erikli">
+  <h3 class="red">Erikli</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- ESSILOR OPTIK -->
+<a href="indexessiloroptik.html" class="card">
+  <img src="IMG_essiloroptik.JPG" alt="Essilor Optik">
+  <h3 class="red">Essilor Optik</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- ESTEE LAUDER -->
+<a href="indexesteelauder.html" class="card">
+  <img src="IMG_esteelauder.JPG" alt="Estée Lauder">
+  <h3 class="red">Estée Lauder</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- ETHEL M CHOCOLATES -->
+<a href="indexethelmchocolates.html" class="card">
+  <img src="IMG_ethelmchocolates.JPG" alt="Ethel M Chocolates">
+  <h3 class="red">Ethel M Chocolates</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- EUKANUBA -->
+<a href="indexeukanuba.html" class="card">
+  <img src="IMG_eukanuba.JPG" alt="Eukanuba">
+  <h3 class="red">Eukanuba</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- EVIAN -->
+<a href="indexevian.html" class="card">
+  <img src="IMG_evian.JPG" alt="Evian">
+  <h3 class="red">Evian</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FA -->
+<a href="indexfa.html" class="card">
+  <img src="IMG_fa.JPG" alt="Fa">
+  <h3 class="red">Fa</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FABER CASTELL -->
+<a href="indexfabercastell.html" class="card">
+  <img src="IMG_fabercastell.JPG" alt="Faber Castell">
+  <h3 class="red">Faber Castell</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FAIRY -->
+<a href="indexfairy.html" class="card">
+  <img src="IMG_fairy.JPG" alt="Fairy">
+  <h3 class="red">Fairy</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FALIM -->
+<a href="indexfalim.html" class="card">
+  <img src="IMG_falim.JPG" alt="Falım">
+  <h3 class="red">Falım</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FEBREZE -->
+<a href="indexfebreze.html" class="card">
+  <img src="IMG_febreze.JPG" alt="Febreze">
+  <h3 class="red">Febreze</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FEMIBION -->
+<a href="indexfemibion.html" class="card">
+  <img src="IMG_femibion.JPG" alt="Femibion">
+  <h3 class="red">Femibion</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+<!-- FENDI -->
+<a href="indexfendi.html" class="card">
+  <img src="IMG_fendi.JPG" alt="Fendi">
+  <h3 class="red">Fendi</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FENTY BEAUTY BY RIHANNA -->
+<a href="indexfenty.html" class="card">
+  <img src="IMG_fenty.JPG" alt="Fenty Beauty by Rihanna">
+  <h3 class="red">Fenty Beauty by Rihanna</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FERRERO -->
+<a href="indexferrero.html" class="card">
+  <img src="IMG_ferrero.JPG" alt="Ferrero">
+  <h3 class="red">Ferrero</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FIBRE SLINIX -->
+<a href="indexfibreslinix.html" class="card">
+  <img src="IMG_fibreslinix.JPG" alt="Fibre Slinix">
+  <h3 class="red">Fibre Slinix</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FINISH -->
+<a href="indexfinish.html" class="card">
+  <img src="IMG_finish.JPG" alt="Finish">
+  <h3 class="red">Finish</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FIRST -->
+<a href="indexfirst.html" class="card">
+  <img src="IMG_first.JPG" alt="First">
+  <h3 class="red">First</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FISHER PRICE -->
+<a href="indexfisherprice.html" class="card">
+  <img src="IMG_fisherprice.JPG" alt="Fisher Price">
+  <h3 class="red">Fisher Price</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FIVERR -->
+<a href="indexfiverr.html" class="card">
+  <img src="IMG_fiverr.JPG" alt="Fiverr">
+  <h3 class="red">Fiverr</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FIXODENT -->
+<a href="indexfixodent.html" class="card">
+  <img src="IMG_fixodent.JPG" alt="Fixodent">
+  <h3 class="red">Fixodent</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FLORA -->
+<a href="indexflora.html" class="card">
+  <img src="IMG_flora.JPG" alt="Flora">
+  <h3 class="red">Flora</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FOODSPRING -->
+<a href="indexfoodspring.html" class="card">
+  <img src="IMG_foodspring.JPG" alt="Foodspring">
+  <h3 class="red">Foodspring</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FORBES -->
+<a href="indexforbes.html" class="card">
+  <img src="IMG_forbes.JPG" alt="Forbes">
+  <h3 class="red">Forbes</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FOX CORP -->
+<a href="indexfoxcorp.html" class="card">
+  <img src="IMG_foxcorp.JPG" alt="Fox Corp">
+  <h3 class="red">Fox Corp</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FREDERIC FEKKAİ -->
+<a href="indexfredericfekkai.html" class="card">
+  <img src="IMG_fredericfekkai.JPG" alt="Frederic Fekkai">
+  <h3 class="red">Frederic Fekkai</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FRESC -->
+<a href="indexfresc.html" class="card">
+  <img src="IMG_fresc.JPG" alt="Fresc">
+  <h3 class="red">Fresc</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FRITOLAY -->
+<a href="indexfritolay.html" class="card">
+  <img src="IMG_fritolay.JPG" alt="Fritolay">
+  <h3 class="red">Fritolay</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FRUKO -->
+<a href="indexfruko.html" class="card">
+  <img src="IMG_fruko.JPG" alt="Fruko">
+  <h3 class="red">Fruko</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FUSE TEA -->
+<a href="indexfusetea.html" class="card">
+  <img src="IMG_fusetea.JPG" alt="Fuse Tea">
+  <h3 class="red">Fuse Tea</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GAIN -->
+<a href="indexgain.html" class="card">
+  <img src="IMG_gain.JPG" alt="Gain">
+  <h3 class="red">Gain</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GALAXY -->
+<a href="indexgalaxy.html" class="card">
+  <img src="IMG_galaxy.JPG" alt="Galaxy">
+  <h3 class="red">Galaxy</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GALILEE EXPORT -->
+<a href="indexgalileeexport.html" class="card">
+  <img src="IMG_galileeexport.JPG" alt="Galilee Export">
+  <h3 class="red">Galilee Export</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GAMIDA CELL -->
+<a href="indexgamidacell.html" class="card">
+  <img src="IMG_gamidacell.JPG" alt="Gamida Cell">
+  <h3 class="red">Gamida Cell</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GAP -->
+<a href="indexgap.html" class="card">
+  <img src="IMG_gap.JPG" alt="GAP">
+  <h3 class="red">GAP</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GARNIER -->
+<a href="indexgarnier.html" class="card">
+  <img src="IMG_garnier.JPG" alt="Garnier">
+  <h3 class="red">Garnier</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GATORADE -->
+<a href="indexgatorade.html" class="card">
+  <img src="IMG_gatorade.JPG" alt="Gatorade">
+  <h3 class="red">Gatorade</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GAVISCON -->
+<a href="indexgaviscon.html" class="card">
+  <img src="IMG_gaviscon.JPG" alt="Gaviscon">
+  <h3 class="red">Gaviscon</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GE -->
+<a href="indexge.html" class="card">
+  <img src="IMG_ge.JPG" alt="GE">
+  <h3 class="red">GE</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GENERAL CATALYST -->
+<a href="indexgeneralcatalyst.html" class="card">
+  <img src="IMG_generalcatalyst.JPG" alt="General Catalyst">
+  <h3 class="red">General Catalyst</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GENERAL MOTORS -->
+<a href="indexgeneralmotors.html" class="card">
+  <img src="IMG_generalmotors.JPG" alt="General Motors">
+  <h3 class="red">General Motors</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GERBER -->
+<a href="indexgerber.html" class="card">
+  <img src="IMG_gerber.JPG" alt="Gerber">
+  <h3 class="red">Gerber</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GILLETTE -->
+<a href="indexgillette.html" class="card">
+  <img src="IMG_gillette.JPG" alt="Gillette">
+  <h3 class="red">Gillette</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GIORGIO ARMANI -->
+<a href="indexgiorgioarmani.html" class="card">
+  <img src="IMG_giorgioarmani.JPG" alt="Giorgio Armani">
+  <h3 class="red">Giorgio Armani</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GIORGIO AB -->
+<a href="indexgiorgioab.html" class="card">
+  <img src="IMG_giorgioab.JPG" alt="Giorgio AB">
+  <h3 class="red">Giorgio AB</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GIVENCHY -->
+<a href="indexgivenchy.html" class="card">
+  <img src="IMG_givenchy.JPG" alt="Givenchy">
+  <h3 class="red">Givenchy</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GLADE -->
+<a href="indexglade.html" class="card">
+  <img src="IMG_glade.JPG" alt="Glade">
+  <h3 class="red">Glade</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GLAM GLOW -->
+<a href="indexglamglow.html" class="card">
+  <img src="IMG_glamglow.JPG" alt="Glam Glow">
+  <h3 class="red">Glam Glow</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GLISS -->
+<a href="indexgliss.html" class="card">
+  <img src="IMG_gliss.JPG" alt="Gliss">
+  <h3 class="red">Gliss</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GODIVA -->
+<a href="indexgodiva.html" class="card">
+  <img src="IMG_godiva.JPG" alt="Godiva">
+  <h3 class="red">Godiva</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GOLDMAN SACHS -->
+<a href="indexgoldmansachs.html" class="card">
+  <img src="IMG_goldmansachs.JPG" alt="Goldman Sachs">
+  <h3 class="red">Goldman Sachs</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GOTTEX -->
+<a href="indexgottex.html" class="card">
+  <img src="IMG_gottex.JPG" alt="Gottex">
+  <h3 class="red">Gottex</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GOURMET GOLD -->
+<a href="indexgourmetgold.html" class="card">
+  <img src="IMG_gourmetgold.JPG" alt="Gourmet Gold">
+  <h3 class="red">Gourmet Gold</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GOURMET PERLE -->
+<a href="indexgourmetperle.html" class="card">
+  <img src="IMG_gourmetperle.JPG" alt="Gourmet Perle">
+  <h3 class="red">Gourmet Perle</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GRANDMA’S -->
+<a href="indexgrandmas.html" class="card">
+  <img src="IMG_grandmas.JPG" alt="Grandma’s">
+  <h3 class="red">Grandma’s</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+<!-- GREENIES -->
+<a href="indexgreenies.html" class="card">
+  <img src="IMG_greenies.JPG" alt="Greenies">
+  <h3 class="red">Greenies</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- H&M -->
+<a href="indexhm.html" class="card">
+  <img src="IMG_hm.JPG" alt="H&M">
+  <h3 class="red">H&M</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HACI ŞAKİR -->
+<a href="indexhacisakir.html" class="card">
+  <img src="IMG_hacisakir.JPG" alt="Hacı Şakir">
+  <h3 class="red">Hacı Şakir</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- GREYDER -->
+<a href="indexgreyder.html" class="card">
+  <img src="IMG_greyder.JPG" alt="Greyder">
+  <h3 class="green">Greyder</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- GUA COFFEE -->
+<a href="indexguacoffee.html" class="card">
+  <img src="IMG_guacoffee.JPG" alt="Gua Coffee">
+  <h3 class="green">Gua Coffee</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- GIPTA -->
+<a href="indexgipta.html" class="card">
+  <img src="IMG_gipta.JPG" alt="Gıpta">
+  <h3 class="green">Gıpta</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+<!-- HADIKLAIM -->
+<a href="indexhadiklaim.html" class="card">
+  <img src="IMG_hadiklaim.JPG" alt="Hadiklaim">
+  <h3 class="red">Hadiklaim</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HALLS -->
+<a href="indexhalls.html" class="card">
+  <img src="IMG_halls.JPG" alt="Halls">
+  <h3 class="red">Halls</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HARPIC -->
+<a href="indexharpic.html" class="card">
+  <img src="IMG_harpic.JPG" alt="Harpic">
+  <h3 class="red">Harpic</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HASBRO -->
+<a href="indexhasbro.html" class="card">
+  <img src="IMG_hasbro.JPG" alt="Hasbro">
+  <h3 class="red">Hasbro</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HAYAT SU -->
+<a href="indexhayatsu.html" class="card">
+  <img src="IMG_hayatsu.JPG" alt="Hayat Su">
+  <h3 class="red">Hayat Su</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HAMİDİYE SU -->
+<a href="indexhamidiyesu.html" class="card">
+  <img src="IMG_hamidiyesu.JPG" alt="Hamidiye Su">
+  <h3 class="green">Hamidiye Su</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+<!-- HEINZ -->
+<a href="indexheinz.html" class="card">
+  <img src="IMG_heinz.JPG" alt="Heinz">
+  <h3 class="red">Heinz</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HELENA RUBINSTEIN -->
+<a href="indexhelenarubinstein.html" class="card">
+  <img src="IMG_helenarubinstein.JPG" alt="Helena Rubinstein">
+  <h3 class="red">Helena Rubinstein</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HELLMAN’S -->
+<a href="indexhellmans.html" class="card">
+  <img src="IMG_hellmans.JPG" alt="Hellman’s">
+  <h3 class="red">Hellman’s</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HENKEL -->
+<a href="indexhenkel.html" class="card">
+  <img src="IMG_henkel.JPG" alt="Henkel">
+  <h3 class="red">Henkel</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HERBAL ESSENCES -->
+<a href="indexherbalessences.html" class="card">
+  <img src="IMG_herbalessences.JPG" alt="Herbal Essences">
+  <h3 class="red">Herbal Essences</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HERBERT SMITH FREEHILLS -->
+<a href="indexherbertsmithfreehills.html" class="card">
+  <img src="IMG_herbertsmithfreehills.JPG" alt="Herbert Smith Freehills">
+  <h3 class="red">Herbert Smith Freehills</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HERO BABY -->
+<a href="indexherobaby.html" class="card">
+  <img src="IMG_herobaby.JPG" alt="Hero Baby">
+  <h3 class="red">Hero Baby</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HERO GIDA SANAYİ A.Ş. -->
+<a href="indexherogida.html" class="card">
+  <img src="IMG_herogida.JPG" alt="Hero Gıda Sanayi A.Ş.">
+  <h3 class="red">Hero Gıda Sanayi A.Ş.</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HERO KIDS -->
+<a href="indexherokids.html" class="card">
+  <img src="IMG_herokids.JPG" alt="Hero Kids">
+  <h3 class="red">Hero Kids</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HİDROMEK -->
+<a href="indexhidromek.html" class="card">
+  <img src="IMG_hidromek.JPG" alt="Hidromek">
+  <h3 class="red">Hidromek</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HILL'S PET NUTRITION -->
+<a href="indexhillspet.html" class="card">
+  <img src="IMG_hillspet.JPG" alt="Hill’s Pet Nutrition">
+  <h3 class="red">Hill’s Pet Nutrition</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HONIGMAN -->
+<a href="indexhonigman.html" class="card">
+  <img src="IMG_honigman.JPG" alt="Honigman">
+  <h3 class="red">Honigman</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HORIZON ORGANIC -->
+<a href="indexhorizonorganic.html" class="card">
+  <img src="IMG_horizonorganic.JPG" alt="Horizon Organic">
+  <h3 class="red">Horizon Organic</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HOT WHEELS -->
+<a href="indexhotwheels.html" class="card">
+  <img src="IMG_hotwheels.JPG" alt="Hot Wheels">
+  <h3 class="red">Hot Wheels</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HUBBA BUBBA -->
+<a href="indexhubbabubba.html" class="card">
+  <img src="IMG_hubbabubba.JPG" alt="Hubba Bubba">
+  <h3 class="red">Hubba Bubba</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HUBLOT -->
+<a href="indexhublot.html" class="card">
+  <img src="IMG_hublot.JPG" alt="Hublot">
+  <h3 class="red">Hublot</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HUGGIES -->
+<a href="indexhuggies.html" class="card">
+  <img src="IMG_huggies.JPG" alt="Huggies">
+  <h3 class="red">Huggies</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HUGO BOSS -->
+<a href="indexhugoboss.html" class="card">
+  <img src="IMG_hugoboss.JPG" alt="Hugo Boss">
+  <h3 class="red">Hugo Boss</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HUMANA -->
+<a href="indexhumana.html" class="card">
+  <img src="IMG_humana.JPG" alt="Humana">
+  <h3 class="red">Humana</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HYUNDAI -->
+<a href="indexhyundai.html" class="card">
+  <img src="IMG_hyundai.JPG" alt="Hyundai">
+  <h3 class="red">Hyundai</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- IBM -->
+<a href="indexibm.html" class="card">
+  <img src="IMG_ibm.JPG" alt="IBM">
+  <h3 class="red">IBM</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- ING BANK -->
+<a href="indexingbank.html" class="card">
+  <img src="IMG_ingbank.JPG" alt="ING Bank">
+  <h3 class="red">ING Bank</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LAMSO -->
+<a href="indexlamso.html" class="card">
+  <img src="IMG_lamso.JPG" alt="Lamso">
+  <h3 class="red">Lamso</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- IGORA ROYAL -->
+<a href="indexigoraroyal.html" class="card">
+  <img src="IMG_igoraroyal.JPG" alt="Igora Royal">
+  <h3 class="red">İgora Royal</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- ILLY -->
+<a href="indexilly.html" class="card">
+  <img src="IMG_illy.JPG" alt="Illy">
+  <h3 class="red">İlly</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- INDOLA -->
+<a href="indexindola.html" class="card">
+  <img src="IMG_indola.JPG" alt="Indola">
+  <h3 class="red">İndola</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- INTEL -->
+<a href="indexintel.html" class="card">
+  <img src="IMG_intel.JPG" alt="Intel">
+  <h3 class="red">Intel</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- JCB -->
+<a href="indexjcb.html" class="card">
+  <img src="IMG_jcb.JPG" alt="JCB">
+  <h3 class="red">JCB</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- HOBBY (Boykot Edilmiyor) -->
+<a href="indexhobby.html" class="card">
+  <img src="IMG_hobby.JPG" alt="Hobby">
+  <h3 class="green">Hobby</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+<!-- JACOBS -->
+<a href="indexjacobs.html" class="card">
+  <img src="IMG_jacobs.JPG" alt="Jacobs">
+  <h3 class="red">Jacobs</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- JAMES WELLBELOVED -->
+<a href="indexjameswellbeloved.html" class="card">
+  <img src="IMG_jameswellbeloved.JPG" alt="James Wellbeloved">
+  <h3 class="red">James Wellbeloved</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- JAZWARES -->
+<a href="indexjazwares.html" class="card">
+  <img src="IMG_jazwares.JPG" alt="Jazwares">
+  <h3 class="red">Jazwares</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- JEFFERIES -->
+<a href="indexjefferies.html" class="card">
+  <img src="IMG_jefferies.JPG" alt="Jefferies">
+  <h3 class="red">Jefferies</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- JELIBON -->
+<a href="indexjelibon.html" class="card">
+  <img src="IMG_jelibon.JPG" alt="Jelibon">
+  <h3 class="red">Jelibon</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- JO MALONE -->
+<a href="indexjomalone.html" class="card">
+  <img src="IMG_jomalone.JPG" alt="Jo Malone">
+  <h3 class="red">Jo Malone</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- JOHNSON & JOHNSON -->
+<a href="indexjohnsonjohnson.html" class="card">
+  <img src="IMG_johnsonjohnson.JPG" alt="Johnson & Johnson">
+  <h3 class="red">Johnson & Johnson</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- JOHNSON’S -->
+<a href="indexjohnsons.html" class="card">
+  <img src="IMG_johnsons.JPG" alt="Johnson’s">
+  <h3 class="red">Johnson’s</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- JOHNSON’S BABY -->
+<a href="indexjohnsonsbaby.html" class="card">
+  <img src="IMG_johnsonsbaby.JPG" alt="Johnson’s Baby">
+  <h3 class="red">Johnson’s Baby</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- JORDAN RIVER -->
+<a href="indexjordanriver.html" class="card">
+  <img src="IMG_jordanriver.JPG" alt="Jordan River">
+  <h3 class="red">Jordan River</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- JPMORGAN -->
+<a href="indexjpmorgan.html" class="card">
+  <img src="IMG_jpmorgan.JPG" alt="JPMorgan">
+  <h3 class="red">JPMorgan</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- JUICY -->
+<a href="indexjuicy.html" class="card">
+  <img src="IMG_juicy.JPG" alt="Juicy">
+  <h3 class="red">Juicy</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- FROIT -->
+<a href="indexfroit.html" class="card">
+  <img src="IMG_froit.JPG" alt="Froit">
+  <h3 class="red">Froit</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- K-Y -->
+<a href="indexky.html" class="card">
+  <img src="IMG_ky.JPG" alt="K-Y">
+  <h3 class="red">K-Y</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- K2R -->
+<a href="indexk2r.html" class="card">
+  <img src="IMG_k2r.JPG" alt="K2r">
+  <h3 class="red">K2r</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KADINLARBILIR.COM -->
+<a href="indexkadinlarbilir.html" class="card">
+  <img src="IMG_kadinlarbilir.JPG" alt="Kadınlarbilir.com">
+  <h3 class="red">Kadınlarbilir.com</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KAHRAMAN EFENDİ -->
+<a href="indexkahramanefendi.html" class="card">
+  <img src="IMG_kahramanefendi.JPG" alt="Kahraman Efendi">
+  <h3 class="red">Kahraman Efendi</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KAHVE DÜNYASI -->
+<a href="indexkahvedunyasi.html" class="card">
+  <img src="IMG_kahvedunyasi.JPG" alt="Kahve Dünyası">
+  <h3 class="red">Kahve Dünyası</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KAN TONG -->
+<a href="indexkantong.html" class="card">
+  <img src="IMG_kantong.JPG" alt="Kan Tong">
+  <h3 class="red">Kan Tong</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KAUFLAND -->
+<a href="indexkaufland.html" class="card">
+  <img src="IMG_kaufland.JPG" alt="Kaufland">
+  <h3 class="red">Kaufland</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KENT -->
+<a href="indexkent.html" class="card">
+  <img src="IMG_kent.JPG" alt="Kent">
+  <h3 class="red">Kent</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KERASTASE -->
+<a href="indexkerastase.html" class="card">
+  <img src="IMG_kerastase.JPG" alt="Kerastase">
+  <h3 class="red">Kerastase</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KEVIN’S NATURAL FOODS -->
+<a href="indexkevinsnaturalfoods.html" class="card">
+  <img src="IMG_kevinsnaturalfoods.JPG" alt="Kevin’s Natural Foods">
+  <h3 class="red">Kevin’s Natural Foods</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KIA -->
+<a href="indexkia.html" class="card">
+  <img src="IMG_kia.JPG" alt="Kia">
+  <h3 class="red">Kia</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KIEHL’S -->
+<a href="indexkiehls.html" class="card">
+  <img src="IMG_kiehls.JPG" alt="Kiehl’s">
+  <h3 class="red">Kiehl’s</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KINDER -->
+<a href="indexkinder.html" class="card">
+  <img src="IMG_kinder.JPG" alt="Kinder">
+  <h3 class="red">Kinder</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KING SOLOMON -->
+<a href="indexkingsolomon.html" class="card">
+  <img src="IMG_kingsolomon.JPG" alt="King Solomon">
+  <h3 class="red">King Solomon</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KINSHIP -->
+<a href="indexkinship.html" class="card">
+  <img src="IMG_kinship.JPG" alt="Kinship">
+  <h3 class="red">Kinship</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KIT KAT -->
+<a href="indexkitkat.html" class="card">
+  <img src="IMG_kitkat.JPG" alt="Kit Kat">
+  <h3 class="red">Kit Kat</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KNORR -->
+<a href="indexknorr.html" class="card">
+  <img src="IMG_knorr.JPG" alt="Knorr">
+  <h3 class="red">Knorr</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+<!-- KOLESTON -->
+<a href="indexkoleston.html" class="card">
+  <img src="IMG_koleston.JPG" alt="Koleston">
+  <h3 class="red">Koleston</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KOMILI -->
+<a href="indexkomili.html" class="card">
+  <img src="IMG_komili.JPG" alt="Komili">
+  <h3 class="red">Komili</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KOMILI BEBE -->
+<a href="indexkomilibebe.html" class="card">
+  <img src="IMG_komilibebe.JPG" alt="Komili Bebe">
+  <h3 class="red">Komili Bebe</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KOMPENSAN -->
+<a href="indexkompensan.html" class="card">
+  <img src="IMG_kompensan.JPG" alt="Kompensan">
+  <h3 class="red">Kompensan</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KOROPLAST -->
+<a href="indexkoroplast.html" class="card">
+  <img src="IMG_koroplast.JPG" alt="Koroplast">
+  <h3 class="red">Koroplast</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KOSLA -->
+<a href="indexkosla.html" class="card">
+  <img src="IMG_kosla.JPG" alt="Kosla">
+  <h3 class="red">Kosla</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KOTEX -->
+<a href="indexkotex.html" class="card">
+  <img src="IMG_kotex.JPG" alt="Kotex">
+  <h3 class="red">Kotex</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KPMG -->
+<a href="indexkpmg.html" class="card">
+  <img src="IMG_kpmg.JPG" alt="KPMG">
+  <h3 class="red">KPMG</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KRAFT HEINZ COMPANY -->
+<a href="indexkraftheinz.html" class="card">
+  <img src="IMG_kraftheinz.JPG" alt="Kraft Heinz Company">
+  <h3 class="red">Kraft Heinz Company</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KYLIE COSMETICS -->
+<a href="indexkyliecosmetics.html" class="card">
+  <img src="IMG_kyliecosmetics.JPG" alt="Kylie Cosmetics">
+  <h3 class="red">Kylie Cosmetics</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KIND -->
+<a href="indexkind.html" class="card">
+  <img src="IMG_kind.JPG" alt="KIND">
+  <h3 class="red">KIND</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- KIRLANGIÇ -->
+<a href="indexkirlangic.html" class="card">
+  <img src="IMG_kirlangic.JPG" alt="Kırlangıç">
+  <h3 class="red">Kırlangıç</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- L&M -->
+<a href="indexlandm.html" class="card">
+  <img src="IMG_landm.JPG" alt="L&M">
+  <h3 class="red">L&M</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LVMH BERNARD AC -->
+<a href="indexlvmh.html" class="card">
+  <img src="IMG_lvmh.JPG" alt="LVMH Bernard AC">
+  <h3 class="red">LVMH Bernard AC</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LA GELATERIA -->
+<a href="indexlagelateria.html" class="card">
+  <img src="IMG_lagelateria.JPG" alt="La Gelateria">
+  <h3 class="red">La Gelateria</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LA MER -->
+<a href="indexlamer.html" class="card">
+  <img src="IMG_lamer.JPG" alt="La Mer">
+  <h3 class="red">La Mer</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LA ROCHE -->
+<a href="indexlaroche.html" class="card">
+  <img src="IMG_laroche.JPG" alt="La Roche">
+  <h3 class="red">La Roche</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LA ROCHE-POSAY -->
+<a href="indexlarocheposay.html" class="card">
+  <img src="IMG_larocheposay.JPG" alt="La Roche-Posay">
+  <h3 class="red">La Roche-Posay</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LACOSTE -->
+<a href="indexlacoste.html" class="card">
+  <img src="IMG_lacoste.JPG" alt="Lacoste">
+  <h3 class="red">Lacoste</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LACTALIS GROUP -->
+<a href="indexlactalis.html" class="card">
+  <img src="IMG_lactalis.JPG" alt="Lactalis Group">
+  <h3 class="red">Lactalis Group</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LACTAMIL -->
+<a href="indexlactamil.html" class="card">
+  <img src="IMG_lactamil.JPG" alt="Lactamil">
+  <h3 class="red">Lactamil</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LANCOME -->
+<a href="indexlancome.html" class="card">
+  <img src="IMG_lancome.JPG" alt="Lancome">
+  <h3 class="red">Lancome</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LARK -->
+<a href="indexlark.html" class="card">
+  <img src="IMG_lark.JPG" alt="Lark">
+  <h3 class="red">Lark</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LARK BOND STREET -->
+<a href="indexlarkbond.html" class="card">
+  <img src="IMG_larkbond.JPG" alt="Lark Bond Street">
+  <h3 class="red">Lark Bond Street</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LATELLA -->
+<a href="indexlatella.html" class="card">
+  <img src="IMG_latella.JPG" alt="Latella">
+  <h3 class="red">Latella</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LAVAZZA -->
+<a href="indexlavazza.html" class="card">
+  <img src="IMG_lavazza.JPG" alt="Lavazza">
+  <h3 class="red">Lavazza</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LAYS -->
+<a href="indexlays.html" class="card">
+  <img src="IMG_lays.JPG" alt="Lays">
+  <h3 class="red">Lays</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LAY’S -->
+<a href="indexlays2.html" class="card">
+  <img src="IMG_lays2.JPG" alt="Lay’s">
+  <h3 class="red">Lay’s</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LE PETIT MARSEILLAIS -->
+<a href="indexlepetitmarseillais.html" class="card">
+  <img src="IMG_lepetitmarseillais.JPG" alt="Le Petit Marseillais">
+  <h3 class="red">Le Petit Marseillais</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LE PETIT -->
+<a href="indexlepetit.html" class="card">
+  <img src="IMG_lepetit.JPG" alt="Le Petit">
+  <h3 class="red">Le Petit</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LEAP -->
+<a href="indexleap.html" class="card">
+  <img src="IMG_leap.JPG" alt="Leap">
+  <h3 class="red">Leap</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+<!-- LECOLA -->
+<a href="indexlecola.html" class="card">
+  <img src="IMG_lecola.JPG" alt="Lecola">
+  <h3 class="green">Lecola</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- LEGO -->
+<a href="indexlego.html" class="card">
+  <img src="IMG_lego.JPG" alt="Lego">
+  <h3 class="red">Lego</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LEIBISH & CO. -->
+<a href="indexleibishco.html" class="card">
+  <img src="IMG_leibishco.JPG" alt="Leibish & Co.">
+  <h3 class="red">Leibish & Co.</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LENOR -->
+<a href="indexlenor.html" class="card">
+  <img src="IMG_lenor.JPG" alt="Lenor">
+  <h3 class="red">Lenor</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LEVIS -->
+<a href="indexlevis.html" class="card">
+  <img src="IMG_levis.JPG" alt="Levis">
+  <h3 class="red">Levis</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LEZITA -->
+<a href="indexlezita.html" class="card">
+  <img src="IMG_lezita.JPG" alt="Lezita">
+  <h3 class="green">Lezita</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- LIDL -->
+<a href="indexlidl.html" class="card">
+  <img src="IMG_lidl.JPG" alt="Lidl">
+  <h3 class="red">Lidl</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LIFE SAVERS -->
+<a href="indexlifesavers.html" class="card">
+  <img src="IMG_lifesavers.JPG" alt="Life Savers">
+  <h3 class="red">Life Savers</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LILY -->
+<a href="indexlily.html" class="card">
+  <img src="IMG_lily.JPG" alt="Lily">
+  <h3 class="red">Lily</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LINENS -->
+<a href="indexlinens.html" class="card">
+  <img src="IMG_linens.JPG" alt="Linens">
+  <h3 class="red">Linens</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LIPTON -->
+<a href="indexlipton.html" class="card">
+  <img src="IMG_lipton.JPG" alt="Lipton">
+  <h3 class="red">Lipton</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LISTERINE -->
+<a href="indexlisterine.html" class="card">
+  <img src="IMG_listerine.JPG" alt="Listerine">
+  <h3 class="red">Listerine</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LIVE NATION ENTERTAINMENT -->
+<a href="indexlivenationentertainment.html" class="card">
+  <img src="IMG_livenationentertainment.JPG" alt="Live Nation Entertainment">
+  <h3 class="red">Live Nation Entertainment</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LOCTITE -->
+<a href="indexloctite.html" class="card">
+  <img src="IMG_loctite.JPG" alt="Loctite">
+  <h3 class="red">Loctite</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LOREAL KIEHLS -->
+<a href="indexlorealkiehls.html" class="card">
+  <img src="IMG_lorealkiehls.JPG" alt="Loreal Kiehls">
+  <h3 class="red">Loreal Kiehls</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LOREAL PARIS -->
+<a href="indexlorealparis.html" class="card">
+  <img src="IMG_lorealparis.JPG" alt="Loreal Paris">
+  <h3 class="red">Loreal Paris</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LOREAL PARIS COMPANY -->
+<a href="indexlorealpariscompany.html" class="card">
+  <img src="IMG_lorealpariscompany.JPG" alt="Loreal Paris Company">
+  <h3 class="red">Loreal Paris Company</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LOUIS VUITTON -->
+<a href="indexlouisvuitton.html" class="card">
+  <img src="IMG_louisvuitton.JPG" alt="Louis Vuitton">
+  <h3 class="red">Louis Vuitton</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LOVE BEAUTY AND PLANET -->
+<a href="indexlovebeautyandplanet.html" class="card">
+  <img src="IMG_lovebeautyandplanet.JPG" alt="Love Beauty and Planet">
+  <h3 class="red">Love Beauty and Planet</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LOVE BUG -->
+<a href="indexlovebug.html" class="card">
+  <img src="IMG_lovebug.JPG" alt="Love Bug">
+  <h3 class="red">Love Bug</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LUIS BIEN -->
+<a href="indexluisbien.html" class="card">
+  <img src="IMG_luisbien.JPG" alt="Luis Bien">
+  <h3 class="green">Luis Bien</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- LUX -->
+<a href="indexlux.html" class="card">
+  <img src="IMG_lux.JPG" alt="Lux">
+  <h3 class="red">Lux</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- LYSOL -->
+<a href="indexlysol.html" class="card">
+  <img src="IMG_lysol.JPG" alt="Lysol">
+  <h3 class="red">Lysol</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- M&M’S -->
+<a href="indexmms.html" class="card">
+  <img src="IMG_mms.JPG" alt="M&M’s">
+  <h3 class="red">M&M’s</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MAN TRUCK -->
+<a href="indexmantruck.html" class="card">
+  <img src="IMG_mantruck.JPG" alt="Man Truck">
+  <h3 class="red">Man Truck</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MNG KARGO -->
+<a href="indexmngkargo.html" class="card">
+  <img src="IMG_mngkargo.JPG" alt="MNG Kargo">
+  <h3 class="red">MNG Kargo</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MAC -->
+<a href="indexmac.html" class="card">
+  <img src="IMG_mac.JPG" alt="Mac">
+  <h3 class="red">Mac</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MAESTRO -->
+<a href="indexmaestro.html" class="card">
+  <img src="IMG_maestro.JPG" alt="Maestro">
+  <h3 class="red">Maestro</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MAGGI -->
+<a href="indexmaggi.html" class="card">
+  <img src="IMG_maggi.JPG" alt="Maggi">
+  <h3 class="red">Maggi</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MAGNUM -->
+<a href="indexmagnum.html" class="card">
+  <img src="IMG_magnum.JPG" alt="Magnum">
+  <h3 class="red">Magnum</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MALTESERS -->
+<a href="indexmaltesers.html" class="card">
+  <img src="IMG_maltesers.JPG" alt="Maltesers">
+  <h3 class="red">Maltesers</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MANGO -->
+<a href="indexmango.html" class="card">
+  <img src="IMG_mango.JPG" alt="Mango">
+  <h3 class="red">Mango</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MARAŞ DÖVME -->
+<a href="indexmarasdovme.html" class="card">
+  <img src="IMG_marasdovme.JPG" alt="Maraş Dövme">
+  <h3 class="red">Maraş Dövme</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MARC -->
+<a href="indexmarc.html" class="card">
+  <img src="IMG_marc.JPG" alt="Marc">
+  <h3 class="red">Marc</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+<!-- MARKS & SPENCER -->
+<a href="indexmarksandspencer.html" class="card">
+  <img src="IMG_marksandspencer.JPG" alt="Marks & Spencer">
+  <h3 class="red">Marks & Spencer</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MARLBORO -->
+<a href="indexmarlboro.html" class="card">
+  <img src="IMG_marlboro.JPG" alt="Marlboro">
+  <h3 class="red">Marlboro</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MARS -->
+<a href="indexmars.html" class="card">
+  <img src="IMG_mars.JPG" alt="Mars">
+  <h3 class="red">Mars</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MARS GRUP -->
+<a href="indexmarsgrup.html" class="card">
+  <img src="IMG_marsgrup.JPG" alt="Mars Grup">
+  <h3 class="red">Mars Grup</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MARS VETERINARY HEALTH -->
+<a href="indexmarsveterinaryhealth.html" class="card">
+  <img src="IMG_marsveterinaryhealth.JPG" alt="Mars Veterinary Health">
+  <h3 class="red">Mars Veterinary Health</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MARSHALL -->
+<a href="indexmarshall.html" class="card">
+  <img src="IMG_marshall.JPG" alt="Marshall">
+  <h3 class="green">Marshall</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- MASSIMO DUTTI -->
+<a href="indexmassimodutti.html" class="card">
+  <img src="IMG_massimodutti.JPG" alt="Massimo Dutti">
+  <h3 class="red">Massimo Dutti</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MASTERCARD -->
+<a href="indexmastercard.html" class="card">
+  <img src="IMG_mastercard.JPG" alt="Mastercard">
+  <h3 class="red">Mastercard</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MASTERFOODS -->
+<a href="indexmasterfoods.html" class="card">
+  <img src="IMG_masterfoods.JPG" alt="Masterfoods">
+  <h3 class="red">Masterfoods</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MASTERPASS -->
+<a href="indexmasterpass.html" class="card">
+  <img src="IMG_masterpass.JPG" alt="Masterpass">
+  <h3 class="red">Masterpass</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MATCHBOX -->
+<a href="indexmatchbox.html" class="card">
+  <img src="IMG_matchbox.JPG" alt="Matchbox">
+  <h3 class="red">Matchbox</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MATTEL -->
+<a href="indexmattel.html" class="card">
+  <img src="IMG_mattel.JPG" alt="Mattel">
+  <h3 class="red">Mattel</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MAVİ -->
+<a href="indexmavi.html" class="card">
+  <img src="IMG_mavi.JPG" alt="Mavi">
+  <h3 class="red">Mavi</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MAX -->
+<a href="indexmax.html" class="card">
+  <img src="IMG_max.JPG" alt="Max">
+  <h3 class="red">Max</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MAX FACTOR -->
+<a href="indexmaxfactor.html" class="card">
+  <img src="IMG_maxfactor.JPG" alt="Max Factor">
+  <h3 class="red">Max Factor</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MAYBELLINE -->
+<a href="indexmaybelline.html" class="card">
+  <img src="IMG_maybelline.JPG" alt="Maybelline">
+  <h3 class="red">Maybelline</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MAYBELLINE NEW YORK -->
+<a href="indexmaybellinenewyork.html" class="card">
+  <img src="IMG_maybellinenewyork.JPG" alt="Maybelline New York">
+  <h3 class="red">Maybelline New York</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MC DONALD’S -->
+<a href="indexmcdonalds.html" class="card">
+  <img src="IMG_mcdonalds.JPG" alt="Mc Donald’s">
+  <h3 class="red">Mc Donald’s</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MCVITIES -->
+<a href="indexmcvities.html" class="card">
+  <img src="IMG_mcvities.JPG" alt="McVities">
+  <h3 class="red">McVities</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MCDERMOTT WILL & EMERY -->
+<a href="indexmcdermottwillandemery.html" class="card">
+  <img src="IMG_mcdermottwillandemery.JPG" alt="McDermott Will & Emery">
+  <h3 class="red">McDermott Will & Emery</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MCKINSEY -->
+<a href="indexmckinsey.html" class="card">
+  <img src="IMG_mckinsey.JPG" alt="McKinsey">
+  <h3 class="red">McKinsey</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MEDJOUL -->
+<a href="indexmedjoul.html" class="card">
+  <img src="IMG_medjoul.JPG" alt="Medjoul">
+  <h3 class="red">Medjoul</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MEHADRIN -->
+<a href="indexmehadrin.html" class="card">
+  <img src="IMG_mehadrin.JPG" alt="Mehadrin">
+  <h3 class="red">Mehadrin</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MERCEDES -->
+<a href="indexmercedes.html" class="card">
+  <img src="IMG_mercedes.JPG" alt="Mercedes">
+  <h3 class="red">Mercedes</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MERCEDES BENZ -->
+<a href="indexmercedesbenz.html" class="card">
+  <img src="IMG_mercedesbenz.JPG" alt="Mercedes Benz">
+  <h3 class="red">Mercedes Benz</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MERCEDES BENZ GROUP -->
+<a href="indexmercedesbenzgroup.html" class="card">
+  <img src="IMG_mercedesbenzgroup.JPG" alt="Mercedes Benz Group">
+  <h3 class="red">Mercedes Benz Group</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- META -->
+<a href="indexmeta.html" class="card">
+  <img src="IMG_meta.JPG" alt="Meta">
+  <h3 class="red">Meta</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- METRO GROSSMARKET -->
+<a href="indexmetrogrossmarket.html" class="card">
+  <img src="IMG_metrogrossmarket.JPG" alt="Metro Grossmarket">
+  <h3 class="red">Metro Grossmarket</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- METROFAST -->
+<a href="indexmetrofast.html" class="card">
+  <img src="IMG_metrofast.JPG" alt="Metrofast">
+  <h3 class="red">Metrofast</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MEYSTAR -->
+<a href="indexmeystar.html" class="card">
+  <img src="IMG_meystar.JPG" alt="Meystar">
+  <h3 class="green">Meystar</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- MEYSU -->
+<a href="indexmeysu.html" class="card">
+  <img src="IMG_meysu.JPG" alt="Meysu">
+  <h3 class="green">Meysu</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- MEYÖZ -->
+<a href="indexmeyoz.html" class="card">
+  <img src="IMG_meyoz.JPG" alt="Meyöz">
+  <h3 class="green">Meyöz</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- MICROSOFT -->
+<a href="indexmicrosoft.html" class="card">
+  <img src="IMG_microsoft.JPG" alt="Microsoft">
+  <h3 class="red">Microsoft</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MİGROS -->
+<a href="indexmigros.html" class="card">
+  <img src="IMG_migros.JPG" alt="Migros">
+  <h3 class="red">Migros</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MİKRO -->
+<a href="indexmikro.html" class="card">
+  <img src="IMG_mikro.JPG" alt="Mikro">
+  <h3 class="green">Mikro</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- MILKA -->
+<a href="indexmilka.html" class="card">
+  <img src="IMG_milka.JPG" alt="Milka">
+  <h3 class="red">Milka</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MILKY WAY -->
+<a href="indexmilkyway.html" class="card">
+  <img src="IMG_milkyway.JPG" alt="Milky Way">
+  <h3 class="red">Milky Way</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MILLENICOM -->
+<a href="indexmillenicom.html" class="card">
+  <img src="IMG_millenicom.JPG" alt="Millenicom">
+  <h3 class="red">Millenicom</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MILUPA -->
+<a href="indexmilupa.html" class="card">
+  <img src="IMG_milupa.JPG" alt="Milupa">
+  <h3 class="red">Milupa</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MINTAX -->
+<a href="indexmintax.html" class="card">
+  <img src="IMG_mintax.JPG" alt="Mintax">
+  <h3 class="red">Mintax</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MIRINDA -->
+<a href="indexmirinda.html" class="card">
+  <img src="IMG_mirinda.JPG" alt="Mirinda">
+  <h3 class="red">Mirinda</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MIRACOLI -->
+<a href="indexmiracoli.html" class="card">
+  <img src="IMG_miracoli.JPG" alt="Miracoli">
+  <h3 class="red">Miracoli</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MISFITS -->
+<a href="indexmisfits.html" class="card">
+  <img src="IMG_misfits.JPG" alt="Misfits">
+  <h3 class="red">Misfits</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MISSBON -->
+<a href="indexmissbon.html" class="card">
+  <img src="IMG_missbon.JPG" alt="Missbon">
+  <h3 class="red">Missbon</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MIXA -->
+<a href="indexmixa.html" class="card">
+  <img src="IMG_mixa.JPG" alt="Mixa">
+  <h3 class="red">Mixa</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MOLFİX -->
+<a href="indexmolfix.html" class="card">
+  <img src="IMG_molfix.JPG" alt="Molfix">
+  <h3 class="green">Molfix</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- MOLPED -->
+<a href="indexmolped.html" class="card">
+  <img src="IMG_molped.JPG" alt="Molped">
+  <h3 class="green">Molped</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- MONDELEZ -->
+<a href="indexmondelez.html" class="card">
+  <img src="IMG_mondelez.JPG" alt="Mondelez">
+  <h3 class="red">Mondelez</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MONSTER -->
+<a href="indexmonster.html" class="card">
+  <img src="IMG_monster.JPG" alt="Monster">
+  <h3 class="red">Monster</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MONSTER ENERGY -->
+<a href="indexmonsterenergy.html" class="card">
+  <img src="IMG_monsterenergy.JPG" alt="Monster Energy">
+  <h3 class="red">Monster Energy</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MOOVIT -->
+<a href="indexmoovit.html" class="card">
+  <img src="IMG_moovit.JPG" alt="Moovit">
+  <h3 class="red">Moovit</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MOPAK -->
+<a href="indexmopak.html" class="card">
+  <img src="IMG_mopak.JPG" alt="Mopak">
+  <h3 class="green">Mopak</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- MORGAN LEWIS -->
+<a href="indexmorganlewis.html" class="card">
+  <img src="IMG_morganlewis.JPG" alt="Morgan Lewis">
+  <h3 class="red">Morgan Lewis</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MORGAN STANLEY -->
+<a href="indexmorganstanley.html" class="card">
+  <img src="IMG_morganstanley.JPG" alt="Morgan Stanley">
+  <h3 class="red">Morgan Stanley</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MORTEIN -->
+<a href="indexmortein.html" class="card">
+  <img src="IMG_mortein.JPG" alt="Mortein">
+  <h3 class="red">Mortein</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MOTOROLA -->
+<a href="indexmotorola.html" class="card">
+  <img src="IMG_motorola.JPG" alt="Motorola">
+  <h3 class="red">Motorola</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MOUNT PLEASANT -->
+<a href="indexmountpleasant.html" class="card">
+  <img src="IMG_mountpleasant.JPG" alt="Mount Pleasant">
+  <h3 class="red">Mount Pleasant</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+<!-- MOUNTAINW DEW -->
+<a href="indexmountaindew.html" class="card">
+  <img src="IMG_mountaindew.JPG" alt="Mountainw Dew">
+  <h3 class="red">Mountain Dew</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MOVE FREE -->
+<a href="indexmovefree.html" class="card">
+  <img src="IMG_movefree.JPG" alt="Move Free">
+  <h3 class="red">Move Free</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MR CLEAN -->
+<a href="indexmrclean.html" class="card">
+  <img src="IMG_mrclean.JPG" alt="Mr Clean">
+  <h3 class="red">Mr Clean</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MR.MUSCLE -->
+<a href="indexmrmuscle.html" class="card">
+  <img src="IMG_mrmuscle.JPG" alt="Mr.Muscle">
+  <h3 class="red">Mr.Muscle</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MUCINEX -->
+<a href="indexmucinex.html" class="card">
+  <img src="IMG_mucinex.JPG" alt="Mucinex">
+  <h3 class="red">Mucinex</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MUGLER BEAUTY -->
+<a href="indexmuglerbeauty.html" class="card">
+  <img src="IMG_muglerbeauty.JPG" alt="Mugler Beauty">
+  <h3 class="red">Mugler Beauty</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MUNCHIES -->
+<a href="indexmunchies.html" class="card">
+  <img src="IMG_munchies.JPG" alt="Munchies">
+  <h3 class="red">Munchies</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MURATTI -->
+<a href="indexmuratti.html" class="card">
+  <img src="IMG_muratti.JPG" alt="Muratti">
+  <h3 class="red">Muratti</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MUTLU MAKARNA -->
+<a href="indexmutlumakarna.html" class="card">
+  <img src="IMG_mutlumakarna.JPG" alt="Mutlu Makarna">
+  <h3 class="red">Mutlu Makarna</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MY CAT DNA -->
+<a href="indexmycatdna.html" class="card">
+  <img src="IMG_mycatdna.JPG" alt="My Cat DNA">
+  <h3 class="red">My Cat DNA</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MY DOG DNA -->
+<a href="indexmydogdna.html" class="card">
+  <img src="IMG_mydogdna.JPG" alt="My Dog DNA">
+  <h3 class="red">My Dog DNA</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MY M&M’S -->
+<a href="indexmym&ms.html" class="card">
+  <img src="IMG_mym&ms.JPG" alt="My M&M’s">
+  <h3 class="red">My M&M’s</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MYHERITAGE -->
+<a href="indexmyheritage.html" class="card">
+  <img src="IMG_myheritage.JPG" alt="MyHeritage">
+  <h3 class="red">MyHeritage</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MYCLEAN -->
+<a href="indexmyclean.html" class="card">
+  <img src="IMG_myclean.JPG" alt="MyClean">
+  <h3 class="red">MyClean</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MYJOOL -->
+<a href="indexmyjool.html" class="card">
+  <img src="IMG_myjool.JPG" alt="MyJool">
+  <h3 class="red">MyJool</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MÖVENPICK -->
+<a href="indexmövenpick.html" class="card">
+  <img src="IMG_mövenpick.JPG" alt="Mövenpick">
+  <h3 class="red">Mövenpick</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- MISS VICKIES -->
+<a href="indexmissvickies.html" class="card">
+  <img src="IMG_missvickies.JPG" alt="Miss Vickies">
+  <h3 class="red">Miss Vickies</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NYX -->
+<a href="indexnyx.html" class="card">
+  <img src="IMG_nyx.JPG" alt="NYX">
+  <h3 class="red">NYX</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NAOT -->
+<a href="indexnaot.html" class="card">
+  <img src="IMG_naot.JPG" alt="Naot">
+  <h3 class="red">Naot</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NASIVIN -->
+<a href="indexnasivin.html" class="card">
+  <img src="IMG_nasivin.JPG" alt="Nasivin">
+  <h3 class="red">Nasivin</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NAT GEO WILD -->
+<a href="indexnatgeowild.html" class="card">
+  <img src="IMG_natgeowild.JPG" alt="Nat Geo Wild">
+  <h3 class="red">Nat Geo Wild</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NATIONAL GEOGRAPHIC -->
+<a href="indexnationalgeographic.html" class="card">
+  <img src="IMG_nationalgeographic.JPG" alt="National Geographic">
+  <h3 class="red">National Geographic</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NATURAL STYLING -->
+<a href="indexnaturalstyling.html" class="card">
+  <img src="IMG_naturalstyling.JPG" alt="Natural Styling">
+  <h3 class="red">Natural Styling</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NATURALIVE -->
+<a href="indexnaturalive.html" class="card">
+  <img src="IMG_naturalive.JPG" alt="Naturalive">
+  <h3>Naturalive</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<!-- NATURE’S BAKERY -->
+<a href="indexnaturesbakery.html" class="card">
+  <img src="IMG_naturesbakery.JPG" alt="Nature’s Bakery">
+  <h3 class="red">Nature’s Bakery</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NATUSAN -->
+<a href="indexnatusan.html" class="card">
+  <img src="IMG_natusan.JPG" alt="Natusan">
+  <h3 class="red">Natusan</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NAUTICA -->
+<a href="indexnautica.html" class="card">
+  <img src="IMG_nautica.JPG" alt="Nautica">
+  <h3 class="red">Nautica</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NEOGAMES -->
+<a href="indexneogames.html" class="card">
+  <img src="IMG_neogames.JPG" alt="Neogames">
+  <h3 class="red">Neogames</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NEOSTRATA -->
+<a href="indexneostrata.html" class="card">
+  <img src="IMG_neostrata.JPG" alt="Neostrata">
+  <h3 class="red">Neostrata</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NESCAFE -->
+<a href="indexnescafe.html" class="card">
+  <img src="IMG_nescafe.JPG" alt="Nescafe">
+  <h3 class="red">Nescafe</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NESFIT -->
+<a href="indexnesfit.html" class="card">
+  <img src="IMG_nesfit.JPG" alt="Nesfit">
+  <h3 class="red">Nesfit</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NESPRESSO -->
+<a href="indexnespresso.html" class="card">
+  <img src="IMG_nespresso.JPG" alt="Nespresso">
+  <h3 class="red">Nespresso</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NESQUIK -->
+<a href="indexnesquik.html" class="card">
+  <img src="IMG_nesquik.JPG" alt="Nesquik">
+  <h3 class="red">Nesquik</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NESTEA -->
+<a href="indexnestea.html" class="card">
+  <img src="IMG_nestea.JPG" alt="Nestea">
+  <h3 class="red">Nestea</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NESTLE -->
+<a href="indexnestle.html" class="card">
+  <img src="IMG_nestle.JPG" alt="Nestle">
+  <h3 class="red">Nestle</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NESTLE GRUP -->
+<a href="indexnestlegrup.html" class="card">
+  <img src="IMG_nestlegrup.JPG" alt="Nestle Grup">
+  <h3 class="red">Nestle Grup</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NESTLE MÜSLI -->
+<a href="indexnestlemüsli.html" class="card">
+  <img src="IMG_nestlemüsli.JPG" alt="Nestle Müsli">
+  <h3 class="red">Nestle Müsli</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NESTLE PURE LIFE -->
+<a href="indexnestlepurelife.html" class="card">
+  <img src="IMG_nestlepurelife.JPG" alt="Nestle Pure Life">
+  <h3 class="red">Nestle Pure Life</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NETFLIX -->
+<a href="indexnetflix.html" class="card">
+  <img src="IMG_netflix.JPG" alt="Netflix">
+  <h3 class="red">Netflix</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NEURIVA -->
+<a href="indexneuriva.html" class="card">
+  <img src="IMG_neuriva.JPG" alt="Neuriva">
+  <h3 class="red">Neuriva</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NEUROBION -->
+<a href="indexneurobion.html" class="card">
+  <img src="IMG_neurobion.JPG" alt="Neurobion">
+  <h3 class="red">Neurobion</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NEUTROGENA -->
+<a href="indexneutrogena.html" class="card">
+  <img src="IMG_neutrogena.JPG" alt="Neutrogena">
+  <h3 class="red">Neutrogena</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NEW BALANCE -->
+<a href="indexnewbalance.html" class="card">
+  <img src="IMG_newbalance.JPG" alt="New Balance">
+  <h3 class="red">New Balance</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NICORETTE -->
+<a href="indexnicorette.html" class="card">
+  <img src="IMG_nicorette.JPG" alt="Nicorette">
+  <h3 class="red">Nicorette</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- NIKE -->
+<a href="indexnike.html" class="card">
+  <img src="IMG_nike.JPG" alt="Nike">
+  <h3 class="red">Nike</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+<a href="indexoneo.html" class="card">
+  <img src="IMG_oneo.JPG" alt="Oneo">
+  <h3 class="red">Oneo</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexnivea.html" class="card">
+  <img src="IMG_nivea.JPG" alt="Nivea">
+  <h3 class="red">Nivea</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexnomnom.html" class="card">
+  <img src="IMG_nomnom.JPG" alt="Nom Nom">
+  <h3 class="red">Nom Nom</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexnovartis.html" class="card">
+  <img src="IMG_novartis.JPG" alt="Novartis">
+  <h3 class="red">Novartis</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexnurofen.html" class="card">
+  <img src="IMG_nurofen.JPG" alt="Nurofen">
+  <h3 class="red">Nurofen</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexnutella.html" class="card">
+  <img src="IMG_nutella.JPG" alt="Nutella">
+  <h3 class="red">Nutella</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexnutramigen.html" class="card">
+  <img src="IMG_nutramigen.JPG" alt="Nutramigen">
+  <h3 class="red">Nutramigen</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexnutricia.html" class="card">
+  <img src="IMG_nutricia.JPG" alt="Nutricia">
+  <h3 class="red">Nutricia</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexnutro.html" class="card">
+  <img src="IMG_nutro.JPG" alt="Nutro">
+  <h3 class="red">Nutro</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexnutsandseeds.html" class="card">
+  <img src="IMG_nutsandseeds.JPG" alt="Nuts and Seeds">
+  <h3 class="red">Nuts and Seeds</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexnvidia.html" class="card">
+  <img src="IMG_nvidia.JPG" alt="Nvidia">
+  <h3 class="red">Nvidia</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexobamakarna.html" class="card">
+  <img src="IMG_obamakarna.JPG" alt="Oba Makarna">
+  <h3 class="red">Oba Makarna</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexoff.html" class="card">
+  <img src="IMG_off.JPG" alt="Off">
+  <h3 class="red">Off</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexofcay.html" class="card">
+  <img src="IMG_ofcay.JPG" alt="Ofçay">
+  <h3 class="red">Ofçay</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexogx.html" class="card">
+  <img src="IMG_ogx.JPG" alt="OGX">
+  <h3 class="red">OGX</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexokey.html" class="card">
+  <img src="IMG_okey.JPG" alt="Okey">
+  <h3 class="red">Okey</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexolay.html" class="card">
+  <img src="IMG_olay.JPG" alt="Olay">
+  <h3 class="red">Olay</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexoldspice.html" class="card">
+  <img src="IMG_oldspice.JPG" alt="Old Spice">
+  <h3 class="red">Old Spice</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexolips.html" class="card">
+  <img src="IMG_olips.JPG" alt="Olips">
+  <h3 class="red">Olips</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexomo.html" class="card">
+  <img src="IMG_omo.JPG" alt="Omo">
+  <h3 class="red">Omo</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexoneo.html" class="card">
+  <img src="IMG_oneo.JPG" alt="Oneo">
+  <h3 class="red">Oneo</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexoracle.html" class="card">
+  <img src="IMG_oracle.JPG" alt="Oracle">
+  <h3 class="red">Oracle</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexoralb.html" class="card">
+  <img src="IMG_oralb.JPG" alt="Oral-B">
+  <h3 class="red">Oral-B</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexorbit.html" class="card">
+  <img src="IMG_orbit.JPG" alt="Orbit/Extra/Freedent">
+  <h3 class="red">Orbit/Extra/Freedent</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexoreo.html" class="card">
+  <img src="IMG_oreo.JPG" alt="Oreo">
+  <h3 class="red">Oreo</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexorigins.html" class="card">
+  <img src="IMG_origins.JPG" alt="Origins">
+  <h3 class="red">Origins</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexorijen.html" class="card">
+  <img src="IMG_orijen.JPG" alt="Orijen">
+  <h3 class="red">Orijen</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexorkid.html" class="card">
+  <img src="IMG_orkid.JPG" alt="Orkid">
+  <h3 class="red">Orkid</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexosisplus.html" class="card">
+  <img src="IMG_osisplus.JPG" alt="Osis+">
+  <h3 class="red">Osis+</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexozmo.html" class="card">
+  <img src="IMG_ozmo.JPG" alt="Ozmo">
+  <h3 class="green">Ozmo</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<a href="indexpg.html" class="card">
+  <img src="IMG_pg.JPG" alt="P&G">
+  <h3 class="red">P&G</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<a href="indexpakmaya.html" class="card">
+  <img src="IMG_pakmaya.JPG" alt="Pakmaya">
+  <h3 class="green">Pakmaya</h3>
+  <p>Boykot edilmemektedir.</p>
+</a>
+
+<a href="indexpallette.html" class="card">
+  <img src="IMG_pallette.JPG" alt="Palette">
+  <h3 class="red">Palette</h3>
+  <p>Boykot edilmektedir.</p>
+</a>
+
+<!-- You can continue with the rest of the brands in a similar format -->
+  <script>
+    function filterCards() {
+      const searchInput = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.querySelectorAll(".card");
+
+      cards.forEach(function(card) {
+        const brandName = card.querySelector("h3").textContent.toLowerCase();
+        if (brandName.includes(searchInput)) {
+          card.style.display = "block"; // Eğer arama sonucu bulunuyorsa kartı göster
+        } else {
+          card.style.display = "none"; // Arama sonucu bulunmazsa kartı gizle
+        }
+      });
+    }
+  </script>
+</body>
+</html>

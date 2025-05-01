@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boykot Bilgi Platformu | Profil</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f7f7f7;
+      color: #333;
+      font-size: 16px;
+    }
+
+    .header {
+      background: #2c5364;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .profile-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .profile-header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      object-fit: cover;
+    }
+
+    .profile-header h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #2c5364;
+    }
+
+    .profile-header p {
+      margin: 5px 0;
+      color: #777;
+    }
+
+    .action-button {
+      display: inline-block;
+      padding: 12px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #2c5364;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .action-button:hover {
+      background: #1a2a33;
+    }
+
+    .profile-details {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+
+    .profile-details div {
+      margin-bottom: 15px;
+    }
+
+    .profile-details strong {
+      color: #2c5364;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="header">
+    <h1>Boykot Bilgi Platformu</h1>
+  </section>
+
+  <section class="profile-container">
+    <div class="profile-header">
+      <img id="profile-img" src="https://www.w3schools.com/w3images/avatar2.png" alt="Profil Fotoğrafı">
+      <h2>Admin</h2>
+      <p>admin@boykot.com</p>
+    </div>
+
+    <div class="profile-details">
+      <div><strong>Ad:</strong> Admin</div>
+      <div><strong>E-posta:</strong> admin@boykot.com</div>
+      <div><strong>Hesap Durumu:</strong> Aktif</div>
+      <div><strong>Katılım Tarihi:</strong> 2025-04-16</div>
+    </div>
+
+    <!-- Dosya yükleme input'u (gizli) -->
+    <input type="file" accept="image/*" id="file-input" />
+
+    <!-- Butonlar -->
+    <button class="action-button" onclick="document.getElementById('file-input').click()">Profil Fotoğrafını Koy</button>
+    <button class="action-button" onclick="logout()">Devam Et</button>
+
+  </section>
+
+  <footer>
+    &copy; 2025 Boykot Platformu | Tüm Hakları Saklıdır
+  </footer>
+
+  <script>
+  
+  function logout() {
+    const confirmLogout = confirm("Devam etmek istediğine emin misin?");
+    if (confirmLogout) {
+      alert("Çıkış yapılıyor. Giriş sayfasına yönlendiriliyorsunuz.");
+      window.location.href = "index.html";
+    }
+  }
+
+  // Fotoğraf seçildiğinde profil görselini güncelle ve kaydet
+  document.getElementById("file-input").addEventListener("change", function () {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const imageUrl = e.target.result;
+        document.getElementById("profile-img").src = imageUrl;
+        localStorage.setItem("profilePic", imageUrl); // Kalıcı olarak sakla
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  // Sayfa yüklendiğinde kayıtlı profil fotoğrafı varsa göster
+  window.addEventListener("DOMContentLoaded", function () {
+    const savedImage = localStorage.getItem("profilePic");
+    if (savedImage) {
+      document.getElementById("profile-img").src = savedImage;
+    }
+  });
+</script>
+
+
+<script>
+  function saveProfile(event) {
+    event.preventDefault();
+    const fileInput = document.getElementById('profilePic');
+    const file = fileInput.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function () {
+        const imageUrl = reader.result;
+        localStorage.setItem('profilePic', imageUrl);
+        window.location.href = 'index.html'; // Ana sayfaya geri dön
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+</script>
+<script>
+  // localStorage'dan bilgileri al
+  const username = localStorage.getItem('username');
+  const email = localStorage.getItem('email');
+
+  // Eğer bilgiler varsa HTML'e yerleştir
+  if (username && email) {
+    document.getElementById('profile-name').textContent = username;
+    document.getElementById('profile-email').textContent = email;
+  }
+</script>
+</body>
+</html>

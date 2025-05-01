@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boykot Bilinçlendirme</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('yazilim.JPG') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    header {
+      padding: 10px 20px;
+      color: white;
+      z-index: 2;
+      position: relative;
+      height: 80px;
+    }
+
+    #menuIcon {
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 2;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    #searchContainer {
+      position: absolute;
+      top: 160px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    #searchInput {
+      padding: 10px 40px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    #searchBtn {
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      background-color: orange;
+      color: black;
+      font-weight: 100px;
+      cursor: pointer;
+    }
+
+    nav#sideMenu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 250px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      color: white;
+      transition: left 0.3s ease;
+      z-index: 1000;
+      padding: 20px;
+      pointer-events: none;
+    }
+
+    nav#sideMenu.open {
+      left: 0;
+      pointer-events: auto;
+    }
+
+    #closeMenu {
+      font-size: 24px;
+      cursor: pointer;
+      display: block;
+      text-align: right;
+    }
+
+    #boykotTitle {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 32px;
+      color: orange;
+      text-align: left;
+      animation: slideIn 1s ease forwards;
+      opacity: 0;
+      margin-bottom: 20px;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateX(-30px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    #authSection button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border: none;
+      background-color: orange;
+      color: black;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #userSection {
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .profile-pic {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 10px auto;
+      display: block;
+    }
+
+    #usernameDisplay {
+      display: block;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    hr {
+      border: 1px solid #555;
+      margin: 20px 0;
+    }
+
+    nav#sideMenu button.menu-button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #1a1a1a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    #logoutBtn {
+      margin-top: 40px;
+      background-color: darkred;
+    }
+
+    #logoutModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      backdrop-filter: blur(5px);
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 2000;
+    }
+
+    #logoutModal .modal-content {
+      background: white;
+      padding: 25px 20px;
+      max-width: 320px;
+      margin: 150px auto;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #logoutModal button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #logoutYes {
+      background-color: #e63946;
+      color: white;
+    }
+
+    #logoutYes:hover {
+      background-color: #b71c1c;
+    }
+
+    #logoutNo {
+      background-color: #bdbdbd;
+      color: #333;
+    }
+
+    #logoutNo:hover {
+      background-color: #9e9e9e;
+    }
+
+    #bottomBar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background-color: rgba(0, 0, 0, 0.85);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .bar-section {
+      flex: 1;
+      text-align: center;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      transition: background 0.3s;
+    }
+
+    .bar-section:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .bar-section .icon {
+      font-size: 20px;
+    }
+
+    .bar-section .label {
+      font-size: 12px;
+    }
+
+    .divider {
+      width: 1.5px;
+      height: 60%;
+      background-color: rgba(255, 255, 255, 0.6);
+      border-radius: 2px;
+    }
+
+    
+    #photoActions {
+      margin-top: 120px;
+      text-align: center;
+    }
+
+    #photoActions button {
+      margin: 10px;
+      padding: 10px 5px;
+      background-color: orange;
+      border: none;
+      border-radius: 5px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+	   width: 138px; 
+      display: inline-block;  
+    }
+ /* ... Diğer stiller ... */
+#cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* Tam 3'erli sütun */
+  gap: 15px;
+  justify-items: center;
+  padding: 20px;
+  width: 100%;  /* Tam genişlik için */
+}
+
+.card {
+  display: block;  /* Her zaman grid içinde */
+  width: 100%;
+  max-width: 200px;  /* Standart boyut */
+  height: auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+  /* Coca-Cola kartı gibi standartlaştırma: Tüm kartlar bu kurallara uyar */
+}
+
+.card img {
+  width: 100%;
+  height: 100px;  /* Resim yüksekliği sabit, tüm kartlarda aynı */
+  object-fit: cover;
+  border-radius: 6px 6px 0 0;
+}
+
+.card h3 {
+  font-size: 14px;
+  margin: 8px 0;
+  color: inherit;  /* Renkleri standart tut, eğer farklıysa */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card p {
+  font-size: 12px;
+  margin: 5px;
+  color: inherit;  /* Metin renklerini standartlaştır */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive ayarlar */
+@media (max-width: 768px) {
+  #cardsContainer {
+    grid-template-columns: repeat(2, 1fr);  /* Tabletlerde 2'li */
+  }
+}
+
+@media (max-width: 480px) {
+  #cardsContainer {
+    grid-template-columns: 1fr;  /* Mobilde tek */
+  }
+}
+
+#cardsContainer .card {
+  display: none;
+}
+
+
+#cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 20px;
+}
+
+.card {
+  display: none; /* başlangıçta görünmesin */
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 250px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card h3 {
+  margin: 10px;
+  font-size: 1.2em;
+}
+
+.card p {
+  margin: 0 10px 10px;
+  font-size: 0.9em;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+  </style>
+</head>
+<body>
+
+
+
+
+
+
+
+<header>
+  <div id="menuIcon">&#9776;</div>
+  <div id="searchContainer">
+    <input type="text" id="searchInput" placeholder="Ara...">
+    <button id="searchBtn">Ara</button>
+  </div>
+</header>
+
+<nav id="sideMenu">
+  <div id="menuContent">
+    <span id="closeMenu">&times;</span>
+    <div id="boykotTitle">Boykot</div>
+
+    <div id="authSection">
+      <button onclick="window.location.href='indexgiris.html'">Giriş Yap</button>
+      <button onclick="window.location.href='indexgiris.html'">Kayıt Ol</button>
+    </div>
+
+    <div id="userSection">
+      <img src="" alt="Profil" class="profile-pic" id="profileImage" />
+      <span id="usernameDisplay">Kullanıcı</span>
+    </div>
+
+    <hr/>
+
+    <button class="menu-button" onclick="window.location.href='indexboykotlistesi.html'">Boykot Listesi</button>
+    <button class="menu-button" onclick="window.location.href='indexhaberler.html'">Haberler</button>
+    <button class="menu-button" onclick="window.location.href='indexhakkimizda.html'">Hakkımızda</button>
+    <button class="menu-button" onclick="window.location.href='indexiletisim.html'">İletişim</button>
+
+    <button class="menu-button" id="logoutBtn">Çıkış Yap</button>
+  </div>
+</nav>
+
+<!-- Çıkış Modal -->
+<div id="logoutModal">
+  <div class="modal-content">
+    <p>Çıkış yapılsın mı?</p>
+    <button id="logoutYes">Evet</button>
+    <button id="logoutNo">Hayır</button>
+  </div>
+</div>
+
+<!-- Fotoğraf Çek ve Fotoğraf Seç -->
+<div id="photoActions">
+  <input type="file" accept="image/*" capture="environment" id="takePhoto" style="display:none;" />
+  <input type="file" accept="image/*" id="selectPhoto" style="display:none;" />
+
+  <button onclick="document.getElementById('takePhoto').click()">Fotoğraf Çek</button>
+  <button onclick="document.getElementById('selectPhoto').click()">Fotoğraflardan Seç</button>
+</div>
+
+<div id="bottomBar">
+  <div class="bar-section" onclick="window.location.href='indexboykotlistesi.html'">
+    <span class="icon">🚫</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="bar-section" onclick="window.location.href='indexkullaniciprofili.html'">
+    <span class="icon">👤</span>
+  </div>
+</div>
+
+<script>
+  const menuIcon = document.getElementById('menuIcon');
+  const sideMenu = document.getElementById('sideMenu');
+  const closeMenu = document.getElementById('closeMenu');
+
+  menuIcon.addEventListener('click', () => {
+    sideMenu.classList.add('open');
+  });
+
+  closeMenu.addEventListener('click', () => {
+    sideMenu.classList.remove('open');
+  });
+
+  const username = localStorage.getItem('username');
+  const profilePic = localStorage.getItem('profilePic');
+
+  if (username && profilePic) {
+    document.getElementById('authSection').style.display = 'none';
+    document.getElementById('userSection').style.display = 'block';
+    document.getElementById('usernameDisplay').textContent = username;
+    document.getElementById('profileImage').src = profilePic;
+  }
+
+  const logoutBtn = document.getElementById('logoutBtn');
+  const logoutModal = document.getElementById('logoutModal');
+  const logoutYes = document.getElementById('logoutYes');
+  const logoutNo = document.getElementById('logoutNo');
+
+  logoutBtn.addEventListener('click', () => {
+    logoutModal.style.display = 'block';
+  });
+
+  logoutNo.addEventListener('click', () => {
+    logoutModal.style.display = 'none';
+  });
+
+  logoutYes.addEventListener('click', () => {
+    localStorage.clear();
+    window.location.href = 'indexgiris.html';
+  });
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('searchInput');
+  const cards = document.querySelectorAll('#cardsContainer .card');
+  const searchCards = function() {
+    const searchText = searchInput.value.toLowerCase().trim();
+    cards.forEach(card => {
+      const title = card.querySelector('h3') ? card.querySelector('h3').textContent.toLowerCase() : '';
+      if (title.includes(searchText)) {
+        card.style.display = 'block';  // Grid içinde göster
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    
+    // Grid'i yenilemek için bir reflow ekliyoruz
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));  // Tarayıcıya layout'u yeniden hesaplat
+    }, 100);  // Küçük bir gecikme
+  };
+
+  searchInput.addEventListener('input', searchCards);
+  document.getElementById('searchBtn').addEventListener('click', searchCards);
+  searchInput.addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+      searchCards();
+    }
+  });
+});
+</script>
+<div id="cardsContainer">
+ <!-- DORITOS -->
+    <a href="indexdoritos.html" class="card">
+      <img src="IMG_4315.JPG" alt="Doritos">
+      <h3 class="red">Doritos</h3>
+      <p>İsrail destekçisi politikalar sebebiyle boykot ediliyor.</p>
+    </a>
+
+    <!-- COCACOLA -->
+    <a href="indexcocacola.html" class="card">
+      <img src="IMG_4316.JPG" alt="Coca-Cola">
+      <h3 class="red">Coca-Cola</h3>
+      <p>İsrail ile olan ticari ilişkiler nedeniyle boykot edilmekte.</p>
+    </a>
+
+    <!-- PEPSI -->
+    <a href="indexpepsi.html" class="card">
+      <img src="IMG_4317.JPG" alt="Pepsi">
+      <h3 class="red">Pepsi</h3>
+      <p>Geçmişteki etik dışı uygulamalar ve iş birlikleri nedeniyle boykot listesinde.</p>
+    </a>
+
+    <!-- ALGIDA -->
+    <a href="indexalgida.html" class="card">
+      <img src="IMG_algida.JPG" alt="Algida">
+      <h3 class="red">Algida</h3>
+      <p>İsrail ile ilişkileri nedeniyle boykot ediliyor.</p>
+    </a>
+
+    <!-- FANTA -->
+    <a href="indexfanta.html" class="card">
+      <img src="IMG_fanta.JPG" alt="Fanta">
+      <h3 class="red">Fanta</h3>
+      <p>Coca-Cola’ya bağlı olması sebebiyle boykot ediliyor.</p>
+    </a>
+
+    <!-- KFC -->
+    <a href="indexkfc.html" class="card">
+      <img src="IMG_kfc.JPG" alt="KFC">
+      <h3 class="red">KFC</h3>
+      <p>İsrail'e destek verdiği gerekçesiyle boykot çağrılarında yer alıyor.</p>
+    </a>
+
+    <!-- ABC DETERJAN (BOYKOT DEĞİL) -->
+    <a href="indexabcdeterjan.html" class="card">
+      <img src="IMG_abcdeterjan.JPG" alt="ABC Deterjan">
+      <h3 class="green">ABC Deterjan</h3>
+      <p>Boykot listesinde yer almamaktadır.</p>
+    </a>
+
+    <!-- ARIEL -->
+    <a href="indexariel.html" class="card">
+      <img src="IMG_ariel.JPG" alt="Ariel">
+      <h3 class="red">Ariel</h3>
+      <p>İsrail'deki üretimi nedeniyle boykot ediliyor.</p>
+    </a>
+
+    <!-- STARBUCKS -->
+    <a href="indexstarbucks.html" class="card">
+      <img src="IMG_starbucks.JPG" alt="Starbucks">
+      <h3 class="red">Starbucks</h3>
+      <p>İsrail'e destek açıklamaları nedeniyle boykot ediliyor.</p>
+    </a>
+
+    <!-- DANONE -->
+    <a href="indexdanone.html" class="card">
+      <img src="IMG_danone.JPG" alt="Danone">
+      <h3 class="red">Danone</h3>
+      <p>İsrail pazarındaki faaliyetleri nedeniyle boykot çağrılarında.</p>
+    </a>
+
+    <!-- ABC KRAFT HEINZ -->
+    <a href="indexkraftheinz.html" class="card">
+      <img src="IMG_kraftheinz.JPG" alt="Kraft Heinz">
+      <h3 class="red">Kraft Heinz</h3>
+      <p>Boykot listelerinde yer alan şirketlerden biri.</p>
+    </a>
+
+    <!-- ABDI IBRAHIM (BOYKOT DEĞİL) -->
+    <a href="indexabdiibrahim.html" class="card">
+      <img src="IMG_abdiibrahim.JPG" alt="Abdi İbrahim">
+      <h3 class="green">Abdi İbrahim</h3>
+      <p>Boykot listesinde yer almamaktadır.</p>
+    </a>
+
+    <!-- ABDULLAH KIĞILI (BOYKOT DEĞİL) -->
+    <a href="indexabdullahkigili.html" class="card">
+      <img src="IMG_abdullahkigili.JPG" alt="Abdullah Kiğılı">
+      <h3 class="green">Abdullah Kiğılı</h3>
+      <p>Boykot listesinde değildir, yerli bir markadır.</p>
+    </a>
+<!-- BÖRGIR -->
+<a href="indexborgir.html" class="card">
+  <img src="IMG_borgir.JPG" alt="Börgır">
+  <h3 class="red">Börgır</h3>
+  <p>Boykot edilen markalar arasında yer almaktadır.</p>
+</a>
+
+<!-- ACANA -->
+<a href="indexacana.html" class="card">
+  <img src="IMG_acana.JPG" alt="Acana">
+  <h3 class="red">Acana</h3>
+  <p>İsrail destekçisi firmalarla bağlantıları nedeniyle boykot edilmektedir.</p>
+</a>
+
+<!-- ACE -->
+<a href="indexace.html" class="card">
+  <img src="IMG_ace.JPG" alt="Ace">
+  <h3 class="red">Ace</h3>
+  <p>İsrail’le ticari ilişkileri nedeniyle boykot ediliyor.</p>
+</a>
+
+<!-- ACTIMEL -->
+<a href="indexactimel.html" class="card">
+  <img src="IMG_actimel.JPG" alt="Actimel">
+  <h3 class="red">Actimel</h3>
+  <p>Danone grubuna bağlı olduğu için boykot listesinde yer alıyor.</p>
+</a>
+
+<!-- ACTIONIQ -->
+<a href="indexactioniq.html" class="card">
+  <img src="IMG_actioniq.JPG" alt="ActionIQ">
+  <h3 class="red">ActionIQ</h3>
+  <p>İsrail destekli teknoloji yatırımları nedeniyle boykot ediliyor.</p>
+</a>
+
+<!-- ACTISOFT (BOYKOT DEĞİL) -->
+<a href="indexactisoft.html" class="card">
+  <img src="IMG_actisoft.JPG" alt="Actisoft">
+  <h3 class="green">Actisoft</h3>
+  <p>İsrail menşeli değildir, boykot listesinde yer almaz.</p>
+</a>
+
+<!-- ACTIVA -->
+<a href="indexactiva.html" class="card">
+  <img src="IMG_activa.JPG" alt="Activa">
+  <h3 class="red">Activa</h3>
+  <p>Danone bünyesinde olması nedeniyle boykot edilmektedir.</p>
+</a>
+
+
+</body>
+</html>
