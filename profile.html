@@ -136,13 +136,22 @@
 
   <script>
   
-  function logout() {
-    const confirmLogout = confirm("Devam etmek istediğine emin misin?");
-    if (confirmLogout) {
-      alert("Çıkış yapılıyor. Giriş sayfasına yönlendiriliyorsunuz.");
-      window.location.href = "index.html";
+  const defaultProfilePic = "https://www.w3schools.com/howto/img_avatar.png";
+
+function logout() {
+  const confirmLogout = confirm("Devam etmek istediğine emin misin?");
+  if (confirmLogout) {
+    const savedImage = localStorage.getItem("profilePic");
+
+    // Fotoğraf yüklenmemişse varsayılan fotoğrafı ayarla
+    if (!savedImage) {
+      localStorage.setItem("profilePic", defaultProfilePic);
     }
+
+    alert("Devam ediliyor. Ana sayfaya yönlendiriliyorsunuz.");
+    window.location.href = "index.html";
   }
+}
 
   // Fotoğraf seçildiğinde profil görselini güncelle ve kaydet
   document.getElementById("file-input").addEventListener("change", function () {
