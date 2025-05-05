@@ -1,55 +1,33 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Haberler</title>
+  <title>Son Haberler</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      background-size: cover;
+      background-color: gray;
+      color: white;
       padding: 40px 20px;
       min-height: 100vh;
-      color: white;
     }
 
-    .back-button {
-      background-color: transparent;
-      color: #fca311;
-      border: 2px solid #fca311;
-      border-radius: 8px;
-      padding: 12px 24px;
-      font-size: 30px;
-      font-weight: bold;
-      cursor: pointer;
-      margin: 0 auto 30px;
-      display: block;
-      transition: all 0.3s ease;
-      width: 98%;
-      max-width: 935px;
-      height: 80px;
-    }
-
-    .back-button:hover {
-      background-color: #fca311;
-      color: #14213d;
-	   
-    }
-
-    h1.title {
-      text-align: center;
+    .ust-yazi {
+      color: #ffdd57;
       font-size: 40px;
-      margin-bottom: 50px;
-      color: #ffffff;
-      background: linear-gradient(to right, #FF0000, #00A859);
-      padding: 20px 0;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-      text-shadow: 1px 1px 2px #000;
+      font-family: verdana;
+      text-align: center;
+      font-weight: bold;
+      font-style: italic;
+      border: 3px solid yellow;
+      background-color: gray;
+      border-radius: 10px;
+      height: 65px;
+      margin-bottom: 20px;
+      line-height: 60px;
     }
 
     .news-list {
@@ -63,18 +41,19 @@
       background: white;
       border-radius: 16px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      width: 75%;
+      width: 98%;
       max-width: 600px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      color: #000;
     }
 
     .custom-image {
       width: 100%;
-      height: 200px;
-      background: url('https://www.setav.org/assets/uploads/2024/05/thumbs_b_c_a66837d6a93504dd783ac3422f836ef0.jpg?3') no-repeat center center;
+      height: 300px;
       background-size: cover;
+      background-position: center;
     }
 
     .content {
@@ -107,79 +86,180 @@
       cursor: pointer;
     }
 
-    .icons span:hover { color: #fca311; }
-
-    .like::before { content: "❤️ "; }
+    .like::before { content: "👍 "; }
     .comment::before { content: "💬 "; }
     .views::before { content: "👁️ "; }
 
-    @media (max-width: 768px) {
-      .card { width: 100%; }
-      .back-button {
-        font-size: 24px;
-        height: auto;
-        padding: 16px;
-      }
+    .like.liked { color: red; }
+
+    .comments-section {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      color: #000;
+      border-top: 1px solid #ccc;
+    }
+
+    .comment-item {
+      margin-bottom: 8px;
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 5px;
+    }
+
+    .comment-form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+    }
+
+    .comment-form button {
+      margin-top: 5px;
+      padding: 8px 12px;
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <!-- Geri Dön Butonu - En Üste -->
-  <button class="back-button" onclick="window.history.back()">← Önceki Sayfaya Geri Dön</button>
+<div class="ust-yazi">Son Haberler!</div>
+<div class="news-list">
 
-  <h1 class="title">Son Haberler</h1>
-
-  <div class="news-list">
-    <!-- Haber Kartları -->
-    <div class="card">
-      <div class="custom-image"></div>
-      <div class="content">
-        <div class="title">Marka X, çevre krizine neden oluyor mu?</div>
-        <div class="desc">Son yayınlanan belgeler, Marka X'in üretim sürecinde çevreye ciddi zarar verdiğini öne sürüyor.</div>
-        <div class="info">
-          <div class="icons">
-            <span class="like">120</span>
-            <span class="comment">18</span>
-            <span class="views">1.542</span>
-          </div>
-          <div>Boykot Platformu</div>
+  <div class="card" data-id="haber1">
+    <div class="custom-image" style="background-image: url('İsrailiflasfoto.JPG');"></div>
+    <div class="content">
+      <div class="title">İSRAİLDE KAPANAN İŞLETMECİLERİN SAYISI DİKKAT ÇEKTİ!!</div>
+      <div class="desc">7 Ekim 2023'den itibaren israil'de 50.000'i aşkın işletmeci iflasa başvurdu.</div>
+      <div class="info">
+        <div class="icons">
+          <span class="like" data-id="haber1">0</span>
+          <span class="comment" data-id="haber1">0</span>
+          <span class="views" data-id="haber1">0</span>
         </div>
       </div>
-    </div>
-
-    <div class="card">
-      <div class="custom-image"></div>
-      <div class="content">
-        <div class="title">Ünlü marka işçilerine düşük maaş ödüyor</div>
-        <div class="desc">Raporlara göre ünlü tekstil markası, çalışanlarına asgari ücretin altında ödeme yapıyor.</div>
-        <div class="info">
-          <div class="icons">
-            <span class="like">89</span>
-            <span class="comment">7</span>
-            <span class="views">978</span>
-          </div>
-          <div>Boykot Platformu</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="custom-image"></div>
-      <div class="content">
-        <div class="title">Hayvanlar üzerinde test yapan şirket ifşa edildi</div>
-        <div class="desc">Sosyal medyada yayılan görüntülerde, bir kozmetik markasının hayvan deneyleri uyguladığı ortaya çıktı.</div>
-        <div class="info">
-          <div class="icons">
-            <span class="like">210</span>
-            <span class="comment">33</span>
-            <span class="views">2.645</span>
-          </div>
-          <div>Boykot Platformu</div>
+      <div class="comments-section" id="comments-haber1" style="display: none;">
+        <div class="comment-list" id="comment-list-haber1"></div>
+        <div class="comment-form">
+          <textarea id="comment-input-haber1" placeholder="Yorumunuzu yazın..."></textarea>
+          <button onclick="addComment('haber1')">Gönder</button>
         </div>
       </div>
     </div>
   </div>
 
+  <div class="card" data-id="haber2">
+    <div class="custom-image" style="background-image: url('Arielhaber.JPG');"></div>
+    <div class="content">
+      <div class="title">1 DEĞİL 8 YIKAMA!!</div>
+      <div class="desc">Haberde yalan olduğu iddia edilen içerik, bakanlık tarafından test edilerek çürütüldü. 2.2 Milyon TL ceza</div>
+      <div class="info">
+        <div class="icons">
+          <span class="like" data-id="haber2">0</span>
+          <span class="comment" data-id="haber2">0</span>
+          <span class="views" data-id="haber2">0</span>
+        </div>
+      </div>
+      <div class="comments-section" id="comments-haber2" style="display: none;">
+        <div class="comment-list" id="comment-list-haber2"></div>
+        <div class="comment-form">
+          <textarea id="comment-input-haber2" placeholder="Yorumunuzu yazın..."></textarea>
+          <button onclick="addComment('haber2')">Gönder</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.like').forEach(btn => {
+    const id = btn.dataset.id;
+    const likeKey = `like_${id}`;
+    const likedKey = `liked_${id}`;
+
+    let count = parseInt(localStorage.getItem(likeKey));
+    if (isNaN(count)) count = 0;
+
+    let liked = localStorage.getItem(likedKey) === "true";
+
+    btn.textContent = count;
+    if (liked) {
+      btn.classList.add("liked");
+    }
+
+    btn.addEventListener("click", () => {
+      if (!liked) {
+        count++;
+        localStorage.setItem(likeKey, count);
+        localStorage.setItem(likedKey, "true");
+        btn.textContent = count;
+        btn.classList.add("liked");
+        liked = true;
+      }
+    });
+  });
+
+  document.querySelectorAll('.views').forEach(span => {
+    const id = span.dataset.id;
+    const viewKey = `view_${id}`;
+    let views = localStorage.getItem(viewKey) || 0;
+    views++;
+    localStorage.setItem(viewKey, views);
+    span.textContent = views;
+  });
+
+  document.querySelectorAll('.comment').forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.id;
+      const section = document.getElementById("comments-" + id);
+      section.style.display = section.style.display === "none" ? "block" : "none";
+      loadComments(id);
+    });
+  });
+
+  function addComment(id) {
+    const input = document.getElementById("comment-input-" + id);
+    const value = input.value.trim();
+    if (value === "") return;
+
+    const key = `comments_${id}`;
+    let comments = JSON.parse(localStorage.getItem(key)) || [];
+    comments.push(value);
+    localStorage.setItem(key, JSON.stringify(comments));
+    input.value = "";
+
+    document.querySelector(`.comment[data-id="${id}"]`).textContent = comments.length;
+    loadComments(id);
+  }
+
+  function loadComments(id) {
+    const key = `comments_${id}`;
+    let comments = JSON.parse(localStorage.getItem(key)) || [];
+    const container = document.getElementById("comment-list-" + id);
+    container.innerHTML = comments.map(c => `<div class="comment-item">${c}</div>`).join('');
+    document.querySelector(`.comment[data-id="${id}"]`).textContent = comments.length;
+  }
+
+  ['haber1', 'haber2'].forEach(loadComments);
+
+  const userId = "kullanici123"; // BURAYI dinamik olarak kullanıcı ID'nizle değiştirin
+
+  document.querySelectorAll('.views').forEach(span => {
+    const newsId = span.dataset.id;
+    const viewKey = `viewed_${userId}_${newsId}`;
+    const totalKey = `views_total_${newsId}`;
+
+    if (!localStorage.getItem(viewKey)) {
+      let totalViews = parseInt(localStorage.getItem(totalKey) || "0");
+      totalViews++;
+      localStorage.setItem(totalKey, totalViews);
+      localStorage.setItem(viewKey, "true");
+    }
+
+    span.textContent = localStorage.getItem(totalKey) || "0";
+  });
+</script>
 </body>
 </html>
